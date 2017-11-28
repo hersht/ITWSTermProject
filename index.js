@@ -1,4 +1,4 @@
-function openTab(floor, elmnt, color) {
+function openTab(floor, elmnt) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -12,8 +12,8 @@ function openTab(floor, elmnt, color) {
     document.getElementById(floor).style.display = "block";
         $("#floor").slideDown();
 
-    elmnt.style.backgroundColor = color;
-    elmnt.style.color="#555";
+    elmnt.style.backgroundColor = "rgba(245,245,245,0.1)";
+    elmnt.style.color="rgb(85, 85, 85)";
 }
 
 
