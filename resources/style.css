@@ -1,17 +1,48 @@
 body {
-    font-family: "Lato", sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding-left: 10%;
     padding-right: 10%;
-    background-color: lightgrey;
+    /*background-color: lightgrey;*/
+    /*background-image: url("library.jpg");*/
+}
+
+body::after {
+  content: "";
+  background: url(library.jpg);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+#intro{
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 10px;
+}
+
+#content{
+    background-color: rgba(204, 204, 204,0.7);
+    margin-top: 5%;
 }
 
 #header{
-    margin-top: 5%;
     text-align: center;
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#roomContent{
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
 }
 
 .tablink {
-    background-color: #555;
+    background-color: rgba(85, 85, 85,0.8);
     color: white;
     float: left;
     border: none;
@@ -23,7 +54,8 @@ body {
 }
 
 .tablink:hover {
-    background-color: #777;
+    background-color: rgba(119, 119, 119,0.5);
+    color: white;
 }
 
 /* Style the tab content */
@@ -31,10 +63,29 @@ body {
     color: white;
     display: none;
     padding: 50px;
-    text-align: center;
+    padding-top: 80px;
     min-height: 300px;
 /*    -webkit-animation: fadeEffect 1s;
     animation: fadeEffect 1s;*/
+}
+
+.roomBtn{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 15px 10px 15px;
+    background: #31bc53;
+    border: solid #196139 0px;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.roomBtn:hover{
+  background: #1a783e;
+  text-decoration: none;
+}
+.reservedBtn{
+    background-color: red;
 }
 
 /* Fade in tabs */
@@ -48,7 +99,75 @@ body {
     to {opacity: 1;}
 }
 
-#Basement {background-color:DodgerBlue;}
-#First {background-color:DeepSkyBlue;}
-#Second {background-color:DarkTurquoise;}
-#Third {background-color:DarkCyan;}
+#Basement {background-color: rgba(245,245,245,0.7)}
+#First {background-color:rgba(245,245,245,0.7)}
+#Second {background-color:rgba(245,245,245,0.7)}
+#Third {background-color:rgba(245,245,245,0.7)}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    min-height: 700px;
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    min-height: 300px;
+}
+
+.modalHead{
+    font-size: 20px;
+}
+.modalIntro{
+    padding-top: 5px;
+}
+
+#reservationPicker{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.reserve{
+    display:flex;
+    flex-direction:column;
+}
+
+.date{
+    float:left;
+}
+
+#reserveBtn{
+    margin-top: 4%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
