@@ -4,6 +4,7 @@
     <title>RoomRez Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="resources/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Raleway" rel="stylesheet">
     <script type="text/javascript" src="resources/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </head>
@@ -11,35 +12,45 @@
 <body>
 	<div id="header">
 		<h1>RoomRez</h1>
-		<p>Welcome to our site! Click the tabs below to view study rooms on each floor of the library. Click a room to reserve it. Happy studying!</p>
+		<p>Click the tabs below to view study rooms on each floor of the library. Click a room to reserve it. A room appears red below if it is currently occupied, but you can still click it to reserve for later. Happy studying!</p>
 	</div>
 
 	<div id="content">
-		<button class="tablink" onclick="openTab('Basement', this, 'DodgerBlue')" id="defaultOpen">Basement</button>
-		<button class="tablink" onclick="openTab('First', this, 'DeepSkyBlue')">First</button>
-		<button class="tablink" onclick="openTab('Second', this, 'DarkTurquoise')">Second</button>
-		<button class="tablink" onclick="openTab('Third', this, 'DarkCyan')">Third</button>
+		<button class="tablink" onclick="openTab('Basement', this, 'whitesmoke')" id="defaultOpen">Basement</button>
+		<button class="tablink" onclick="openTab('First', this, 'whitesmoke')">First</button>
+		<button class="tablink" onclick="openTab('Second', this, 'whitesmoke')">Second</button>
+		<button class="tablink" onclick="openTab('Third', this, 'whitesmoke')">Third</button>
 
 		<div id="Basement" class="tabcontent">
-		  <h3>Basement</h3>
-		  <p>Basement room list.</p>
+<!--		  <h3>Basement</h3>-->
+		  <ul id="baseTab"></ul>
 		</div>
 
 		<div id="First" class="tabcontent">
-		  <h3>First Floor</h3>
-		  <p>First floor room list.</p> 
+<!--		  <h3>First Floor</h3>-->
+		  <ul id="firstTab"></ul>
 		</div>
 
 		<div id="Second" class="tabcontent">
-		  <h3>Second Floor</h3>
-		  <p>Second floor room list.</p>
+<!--		  <h3>Second Floor</h3>-->
+		  <ul id="secondTab"></ul>
 		</div>
 
 		<div id="Third" class="tabcontent">
-		  <h3>Third Floor</h3>
-		  <p>Third floor room list.</p>
+<!--		  <h3>Third Floor</h3>-->
+		  <ul id="thirdTab"></ul>
 		</div>
 	</div>
+  
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+    </div>
+
+  </div>
 </body>
 
 
