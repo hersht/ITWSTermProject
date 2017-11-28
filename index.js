@@ -90,10 +90,9 @@ $(document).ready(function() {
       var today = new Date();
       var tomorrow = new Date();
       today.getDate();
-      console.log(today);
       tomorrow.setDate(today.getDate() + 1);
-      document.getElementById("todayTxt").append(today.getUTCMonth().toString()+"/"+today.getUTCDate().toString()+"/"+today.getUTCFullYear().toString()+")");
-      document.getElementById("tmmTxt").append(tomorrow.getUTCMonth().toString()+"/"+tomorrow.getUTCDate().toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
+      document.getElementById("todayTxt").innerHTML = "("+(today.getUTCMonth()+1).toString()+"/"+today.getUTCDate().toString()+"/"+today.getUTCFullYear().toString()+")";
+      document.getElementById("tmmTxt").innerHTML = "("+(tomorrow.getUTCMonth()+1).toString()+"/"+tomorrow.getUTCDate().toString()+"/"+tomorrow.getUTCFullYear().toString()+")";
       modal.style.display = "block";
     }
 
@@ -106,12 +105,16 @@ $(document).ready(function() {
     //close button
     close.onclick = function(){
       modal.style.display="none";
+      // document.getElementById("todayTxt").innerHTML = "";
+      // document.getElementById("tmmTxt").innerHTML = "";
     }
     
     //if user clicks out of modal, close modal
     window.onclick = function(event) {
       if (event.target == modal) {
-        modal.style.display = "none";       
+        modal.style.display = "none";
+        // document.getElementById("todayTxt").innerHTML = "";
+        // document.getElementById("tmmTxt").innerHTML = "";       
       }
     }
 
@@ -119,6 +122,6 @@ $(document).ready(function() {
     reserveBtn.onclick = function() {
       console.log("reserved"); 
 
-           
+
     };
 });
