@@ -63,6 +63,11 @@
           </div>
           <div id="modalTime" class="reserve">
             <p>Choose times</p>
+            <form id="timeSelect">
+              <div id="row1"></div>
+              <div id="row2"></div>
+              <!-- <input type="checkbox" name="time" value="Bike" id="0">0:00<br> -->
+            </form>
           </div>
         </div>
 

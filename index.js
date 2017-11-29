@@ -257,6 +257,28 @@ $(document).ajaxComplete(function(){
       document.getElementById("today").innerHTML = ("Today ("+(today.getUTCMonth()+1).toString()+"/"+(today.getUTCDate()-1).toString()+"/"+today.getUTCFullYear().toString()+")");
       document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getUTCMonth()+1).toString()+"/"+(tomorrow.getUTCDate()-1).toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
       modal.style.display = "block";
+      createTimeTable();
+    }
+
+    function createTimeTable(){
+      for(var i =0; i<24; i++){
+        var x = document.createElement("INPUT");
+        x.setAttribute("type", "checkbox");
+        x.setAttribute("name", "time");
+        x.setAttribute("value", i);
+        x.setAttribute("id", i);
+        x.setAttribute("class", "timebox");
+        var t = document.createElement("P");
+        t.innerHTML = i+":00"; 
+        if(i<13){
+          var append = document.getElementById("row1");
+        }
+        else{
+          var append = document.getElementById("row2");
+        }
+        append.appendChild(x);
+        append.appendChild(t);
+      }
     }
 
     document.getElementById("dateSelect").onchange = function() {

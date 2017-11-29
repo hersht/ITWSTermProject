@@ -159,6 +159,23 @@ body::after {
     flex-direction:column;
 }*/
 
+#row1{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+}
+
+#row2{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+}
+
+.timebox{
+   display:flex;
+    flex-direction:column;
+}
+
 #modalDate{
     padding-bottom: 10px;
     font-weight: bold;
