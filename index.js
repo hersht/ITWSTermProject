@@ -91,8 +91,8 @@ $(document).ready(function() {
       var tomorrow = new Date();
       today.getDate();
       tomorrow.setDate(today.getDate() + 1);
-      document.getElementById("todayTxt").innerHTML = "("+(today.getUTCMonth()+1).toString()+"/"+today.getUTCDate().toString()+"/"+today.getUTCFullYear().toString()+")";
-      document.getElementById("tmmTxt").innerHTML = "("+(tomorrow.getUTCMonth()+1).toString()+"/"+tomorrow.getUTCDate().toString()+"/"+tomorrow.getUTCFullYear().toString()+")";
+      document.getElementById("today").innerHTML = ( "Today ("+(today.getUTCMonth()+1).toString()+"/"+(today.getUTCDate()-1).toString()+"/"+today.getUTCFullYear().toString()+")");
+      document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getUTCMonth()+1).toString()+"/"+(tomorrow.getUTCDate()-1).toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
       modal.style.display = "block";
     }
 
@@ -105,16 +105,16 @@ $(document).ready(function() {
     //close button
     close.onclick = function(){
       modal.style.display="none";
-      // document.getElementById("todayTxt").innerHTML = "";
-      // document.getElementById("tmmTxt").innerHTML = "";
+      document.getElementById("today").innerHTML = "";
+      document.getElementById("tomorrow").innerHTML = "";
     }
     
     //if user clicks out of modal, close modal
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
-        // document.getElementById("todayTxt").innerHTML = "";
-        // document.getElementById("tmmTxt").innerHTML = "";       
+        document.getElementById("today").innerHTML = "";
+        document.getElementById("tomorrow").innerHTML = "";     
       }
     }
 
