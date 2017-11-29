@@ -60,7 +60,7 @@ body::after {
 
 /* Style the tab content */
 .tabcontent {
-    color: white;
+    color: black;
     display: none;
     padding: 50px;
     padding-top: 80px;
