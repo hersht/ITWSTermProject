@@ -236,11 +236,14 @@ $(document).ajaxComplete(function(){
          $('.curr_room').css('margin-right', '700px');
     }
 
-
     var modal = document.getElementById('myModal');
     var modalContent = document.getElementsByClassName("modal-content")[0];
     var modalHead = document.getElementById("modalHead");
     var close = document.getElementsByClassName("close")[0]; //modal close button
+    var currentRoom = -1;
+    var today = new Date();
+    var tomorrow = new Date();
+    var chosenDate = today;
 
     //when a room button is clicked, open modal for that room
     function btnClick(id){
@@ -248,14 +251,23 @@ $(document).ajaxComplete(function(){
       var title = document.createElement("P");
       var title = document.getElementById("modalTitle");
       title.innerHTML = "Room "+id; 
-      
-      var today = new Date();
-      var tomorrow = new Date();
+      currentRoom = id;
       today.getDate();
       tomorrow.setDate(today.getDate() + 1);
-      document.getElementById("today").innerHTML = ( "Today ("+(today.getUTCMonth()+1).toString()+"/"+(today.getUTCDate()-1).toString()+"/"+today.getUTCFullYear().toString()+")");
+      document.getElementById("today").innerHTML = ("Today ("+(today.getUTCMonth()+1).toString()+"/"+(today.getUTCDate()-1).toString()+"/"+today.getUTCFullYear().toString()+")");
       document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getUTCMonth()+1).toString()+"/"+(tomorrow.getUTCDate()-1).toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
       modal.style.display = "block";
+    }
+
+    document.getElementById("dateSelect").onchange = function() {
+      var dateVal = document.getElementById("dateSelect").value; 
+      if(dateVal=="today"){
+        chosenDate = today;
+      }
+      else if(dateVal=="tomorrow"){
+        chosenDate = tomorrow;
+      }
+      console.log(chosenDate);
     }
 
 
@@ -263,12 +275,6 @@ $(document).ajaxComplete(function(){
     var button_modify = document.getElementsByClassName('roomBtn');
     for(var i = 0; i < button_modify.length; ++i){
         button_modify[i].onclick = function() { btnClick(this.id); };
-    }
-
-
-
-    function createDatePicker(today, tomorrow){
-
     }
 
     //close button

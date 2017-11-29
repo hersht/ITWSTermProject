@@ -55,9 +55,9 @@
           <div id="modalDate" class="reserve">
             <p>Choose a date</p>
             <form action="">
-              <select id="dateSelect" onchange="">
+              <select id="dateSelect">
                 <option id="today" class="date" name="date" value="today">
-                <option id= "tomorrow" class="date" type="radio" name="date" value="tomorow">
+                <option id= "tomorrow" class="date" name="date" value="tomorrow">
               </select>
             </form>
           </div>
@@ -74,24 +74,3 @@
     </div>
   </div>
 </body>
- 
-
-<?php
-  // We'll need a database connection both for retrieving records and for 
-  // inserting them.  Let's get it up front and use it for both processes
-  // to avoid opening the connection twice.  If we make a good connection, 
-  // we'll change the $dbOk flag.
-  $dbOk = false;
-  
-  /* Create a new database connection object, passing in the host, username,
-     password, and database to use. The "@" suppresses errors. */
-  @ $db = new mysqli('localhost', 'root', 'mypass', 'iit');
-  
-  if ($db->connect_error) {
-    echo '<div class="messages">Could not connect to the database. Error: ';
-    echo $db->connect_errno . ' - ' . $db->connect_error . '</div>';
-  } else {
-    echo '<div class="messages">Could connect to the database. ';
-    $dbOk = true; 
-  }
-?> 
