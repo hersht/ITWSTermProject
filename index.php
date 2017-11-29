@@ -48,19 +48,21 @@
         <span class="close">&times;</span>
         <div id="modalHead">
           <p id="modalTitle" style="font-size: 25px;"></p>
-          <p id="modalIntro">Choose a date and time to reserve. You can reserve a room for today or tomorrow. Be sure to check ALL blocks you would like to reserve. </p>
+          <p id="modalIntro">Choose a date and time to reserve. You can reserve a room for today or tomorrow. Be sure to check ALL blocks you would like to reserve for the selected day. Only available times are displayed.</p>
         </div>
 
         <div id="reservationPicker">
           <div id="modalDate" class="reserve">
-            <p>Choose your date</p>
+            <p>Choose a date</p>
             <form action="">
-              <input id="today" class="date" type="radio" name="date" value="today"><p id="todayTxt"> Today (</p><br>
-              <input id= "tomorrow" class="date" type="radio" name="date" value="tomorow"><p id="tmmTxt"> Tomorrow (</p><br>
+              <select id="dateSelect" onchange="">
+                <option id="today" class="date" name="date" value="today">
+                <option id= "tomorrow" class="date" type="radio" name="date" value="tomorow">
+              </select>
             </form>
           </div>
           <div id="modalTime" class="reserve">
-            <p>Choose your time</p>
+            <p>Choose times</p>
           </div>
         </div>
 

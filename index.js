@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 function fetch_floor_rooms(floor, element){
     //alert("YO");
     //console.log("HELLO");
@@ -244,7 +237,7 @@ $(document).ajaxComplete(function(){
     }
 
 
-      var modal = document.getElementById('myModal');
+    var modal = document.getElementById('myModal');
     var modalContent = document.getElementsByClassName("modal-content")[0];
     var modalHead = document.getElementById("modalHead");
     var close = document.getElementsByClassName("close")[0]; //modal close button
@@ -261,9 +254,7 @@ $(document).ajaxComplete(function(){
       today.getDate();
       tomorrow.setDate(today.getDate() + 1);
       document.getElementById("today").innerHTML = ( "Today ("+(today.getUTCMonth()+1).toString()+"/"+(today.getUTCDate()-1).toString()+"/"+today.getUTCFullYear().toString()+")");
-
       document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getUTCMonth()+1).toString()+"/"+(tomorrow.getUTCDate()-1).toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
-
       modal.style.display = "block";
     }
 
@@ -292,7 +283,7 @@ $(document).ajaxComplete(function(){
       if (event.target == modal) {
         modal.style.display = "none";
         document.getElementById("today").innerHTML = "";
-        document.getElementById("tomorrow").innerHTML = "";       
+        document.getElementById("tomorrow").innerHTML = "";
       }
     }
 
