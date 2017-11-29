@@ -304,6 +304,15 @@ $(document).ajaxComplete(function(){
       modal.style.display="none";
       document.getElementById("today").innerHTML = "";
       document.getElementById("tomorrow").innerHTML = "";
+      var row = document.getElementById("row1");
+      while (row.firstChild) {
+          row.removeChild(row.firstChild);
+      }
+      row = document.getElementById("row2");
+      while (row.firstChild) {
+          row.removeChild(row.firstChild);
+      }
+      
     }
     
     //if user clicks out of modal, close modal
@@ -312,6 +321,14 @@ $(document).ajaxComplete(function(){
         modal.style.display = "none";
         document.getElementById("today").innerHTML = "";
         document.getElementById("tomorrow").innerHTML = "";
+        var row = document.getElementById("row1");
+        while (row.firstChild) {
+            row.removeChild(row.firstChild);
+        }
+        row = document.getElementById("row2");
+        while (row.firstChild) {
+            row.removeChild(row.firstChild);
+        }
       }
     }
 
