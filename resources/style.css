@@ -126,7 +126,7 @@ body::after {
     padding: 20px;
     border: 1px solid #888;
     width: 60%; /* Could be more or less, depending on screen size */
-    height: 500px;
+    height: 400px;
 }
 
 #login{
@@ -134,9 +134,9 @@ body::after {
     width: 20%;
 }
 
-#loginModal{
+/*#loginModal{
     display: none;
-}
+}*/
 
 .modalHead{
     font-size: 20px;
@@ -188,7 +188,7 @@ body::after {
 
 
 #reserveBtn{
-    margin-top: 4%;
+    margin-top: 1%;
 }
 
 /* The Close Button */

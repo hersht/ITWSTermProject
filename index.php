@@ -47,7 +47,7 @@
 
         <span class="close">&times;</span>
         <div id="modalHead">
-          <p id="modalTitle" style="font-size: 25px;"></p>
+          <p id="modalTitle" style="font-size: 25px; font-weight: bold;"></p>
           <p id="modalIntro">Choose a date and time to reserve. You can reserve a room for today or tomorrow. Be sure to check ALL blocks you would like to reserve for the selected day.</p>
         </div>
 
@@ -70,7 +70,6 @@
             </form>
           </div>
         </div>
-
         <div id="reserveBtn">
           <button>Reserve</button>
         </div>
