@@ -312,6 +312,9 @@ $(document).ajaxComplete(function(){
       while (row.firstChild) {
           row.removeChild(row.firstChild);
       }
+      for(var i=0; i<24; i++){
+        document.getElementById(i).disabled = false;
+      }
       
     }
     
@@ -328,6 +331,9 @@ $(document).ajaxComplete(function(){
         row = document.getElementById("row2");
         while (row.firstChild) {
             row.removeChild(row.firstChild);
+        }
+        for(var i=0; i<24; i++){
+          document.getElementById(i).disabled = false;
         }
       }
     }
