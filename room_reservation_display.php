@@ -3,7 +3,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "mypass";
+$password = "cestlafin1";
 $dbname = "room-res";
 
 
@@ -24,10 +24,10 @@ if ($conn->connect_error) {
 
 for($i = 0; $i < 4; ++$i){
  $curr_floor = [];
- $max_id = 250 * ($i + 1);
+ $max_id = 5  + ($i * 10);
  $sql = "SELECT * FROM `Room` WHERE room_id<$max_id AND $lower_bound<=room_id";
  $result = $conn->query($sql);
- $lower_bound = $max_id;
+ $lower_bound = $max_id + 5;
 
  if ($result->num_rows > 0) {
 
@@ -68,5 +68,5 @@ for($i = 0; $i < 4; ++$i){
  echo json_encode($final_arr);
 
 // /* close connection */
- $mysqli->close();
+ //$mysqli->close();
 ?>
