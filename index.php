@@ -48,7 +48,7 @@
         <span class="close">&times;</span>
         <div id="modalHead">
           <p id="modalTitle" style="font-size: 25px;"></p>
-          <p id="modalIntro">Choose a date and time to reserve. You can reserve a room for today or tomorrow. Be sure to check ALL blocks you would like to reserve for the selected day. Only available times are displayed.</p>
+          <p id="modalIntro">Choose a date and time to reserve. You can reserve a room for today or tomorrow. Be sure to check ALL blocks you would like to reserve for the selected day.</p>
         </div>
 
         <div id="reservationPicker">
