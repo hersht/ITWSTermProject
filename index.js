@@ -254,8 +254,8 @@ $(document).ajaxComplete(function(){
       currentRoom = id;
       today.getDate();
       tomorrow.setDate(today.getDate() + 1);
-      document.getElementById("today").innerHTML = ("Today ("+(today.getUTCMonth()+1).toString()+"/"+(today.getUTCDate()-1).toString()+"/"+today.getUTCFullYear().toString()+")");
-      document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getUTCMonth()+1).toString()+"/"+(tomorrow.getUTCDate()-1).toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
+      document.getElementById("today").innerHTML = ("Today ("+(today.getUTCMonth()+1).toString()+"/"+(today.getUTCDate()).toString()+"/"+today.getUTCFullYear().toString()+")");
+      document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getUTCMonth()+1).toString()+"/"+(tomorrow.getUTCDate()).toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
       modal.style.display = "block";
       createTimeTable();
     }
