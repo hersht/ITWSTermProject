@@ -270,11 +270,12 @@ $(document).ajaxComplete(function(){
         x.setAttribute("class", "timebox");
         var t = document.createElement("P");
         t.innerHTML = i+":00"; 
+        var append;
         if(i<13){
-          var append = document.getElementById("row1");
+          append = document.getElementById("row1");
         }
         else{
-          var append = document.getElementById("row2");
+          append = document.getElementById("row2");
         }
         append.appendChild(x);
         append.appendChild(t);
@@ -311,11 +312,7 @@ $(document).ajaxComplete(function(){
       row = document.getElementById("row2");
       while (row.firstChild) {
           row.removeChild(row.firstChild);
-      }
-      for(var i=0; i<24; i++){
-        document.getElementById(i).disabled = false;
-      }
-      
+      }      
     }
     
     //if user clicks out of modal, close modal
@@ -331,9 +328,6 @@ $(document).ajaxComplete(function(){
         row = document.getElementById("row2");
         while (row.firstChild) {
             row.removeChild(row.firstChild);
-        }
-        for(var i=0; i<24; i++){
-          document.getElementById(i).disabled = false;
         }
       }
     }
