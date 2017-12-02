@@ -2,8 +2,6 @@ body {
     font-family: 'Roboto', sans-serif;
     padding-left: 10%;
     padding-right: 10%;
-    /*background-color: lightgrey;*/
-    /*background-image: url("library.jpg");*/
 }
 
 body::after {
@@ -19,6 +17,24 @@ body::after {
   z-index: -1;   
 }
 
+#title{
+    margin-left: 10%;
+}
+
+#viewRes{
+    float: right;
+    font-family: 'Lato', sans-serif;
+    /*font-weight: bold;*/
+    font-style: italic;
+    background-color: rgba(85, 85, 85,0.8);
+    color: white;
+    border-width: 0px;
+    padding: 4px 6px 4px 6px;
+}
+#viewRes:hover{
+    background-color: rgba(119, 119, 119,0.5);
+    color: white;
+}
 #intro{
     font-family: 'Lato', sans-serif;
     padding-bottom: 10px;
@@ -72,7 +88,8 @@ body::after {
 .roomBtn{
     font-family: 'Open Sans', sans-serif;
     margin: 0 15px 10px 15px;
-    background: #31bc53;
+    background: red;
+    /*#31bc53*/
     border: solid #196139 0px;
     color: #ffffff;
     font-size: 15px;
@@ -81,11 +98,9 @@ body::after {
 }
 
 .roomBtn:hover{
-  background: #1a783e;
+  background:#a00000;
+  /*#1a783e;*/
   text-decoration: none;
-}
-.reservedBtn{
-    background-color: red;
 }
 
 /* Fade in tabs */
@@ -111,12 +126,19 @@ body::after {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    min-height: 700px;
-    height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#myModal{
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+}
+
+#viewResModal{
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
 }
 
 /* Modal Content/Box */
@@ -125,18 +147,18 @@ body::after {
     margin: 6% auto; /* 6% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
+   
+}
+
+#mainModalContent{
     width: 60%; /* Could be more or less, depending on screen size */
     height: 400px;
 }
 
-#login{
-    height: 13%;
-    width: 20%;
+#viewResContent{
+    width: 40%;
+    height: 200px;
 }
-
-/*#loginModal{
-    display: none;
-}*/
 
 .modalHead{
     font-size: 20px;
