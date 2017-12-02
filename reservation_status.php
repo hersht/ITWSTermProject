@@ -28,7 +28,7 @@ $reserved_hours = [];
 
 
 
-$sql = "SELECT * FROM `reservation` WHERE startdate='$today' AND start>='$curr_military_time' AND room_id = $room_id";
+$sql = "SELECT * FROM `reservation` WHERE startdate='$today' AND start>='$curr_military_time' AND room_id = '$room_id'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
      	// }
      	$reserved_hours[] = date("H", strtotime($row["start"]));
      	
-       echo "id: ".$curr_res[0].$curr_res[1].$curr_res[2]. $curr_res[3].$curr_res[4].$curr_res[5]."<br>";
+      // echo "id: ".$curr_res[0].$curr_res[1].$curr_res[2]. $curr_res[3].$curr_res[4].$curr_res[5]."<br>";
     }
 }
 
@@ -63,9 +63,9 @@ for($i = $closest_hour; $i <= 23; ++$i){
 }
 
 
-for($k = 0; $k < count($hours); ++$k){
-	echo "Valid hour: ". $hours[$k]."<br>";
-}
+// for($k = 0; $k < count($hours); ++$k){
+// 	echo "Valid hour: ". $hours[$k]."<br>";
+// }
 
 
 
