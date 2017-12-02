@@ -140,7 +140,7 @@ function color_rooms(element, roomID){
   $.ajax({  
     type: 'POST',  
     url: 'reservation_status.php', 
-    data: {room_id: roomID},
+    data: {"room_id": roomID},
     success: function(response) {
         console.log(response);
     }

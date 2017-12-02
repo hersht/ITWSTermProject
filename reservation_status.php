@@ -3,7 +3,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "mypass";
+$password = "cestlafin1";
 $dbname = "room-res";
 
 
@@ -17,6 +17,7 @@ if ($conn->connect_error) {
 } 
 
 
+echo "Current PHP Version: ".phpversion()."<br>";
 $room = $_POST["room_id"];
 
 echo "ROOM: ".$room."<br>";
