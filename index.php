@@ -76,7 +76,7 @@
           <span class="close">&times;</span>
           <form action="">
             Enter RCS ID:<br>
-            <input type="text" name="firstname">
+            <input type="text" name="rcsid">
             <br><br>
             <input type="submit" value="Go">
           </form> 
