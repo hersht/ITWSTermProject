@@ -128,15 +128,6 @@ function fetch_floor_rooms(floor, element){
 
 function color_rooms(element, roomID){
   var url = "reservation_status.php";
-  var myObj = {room_id: "roomID"};
-
-  // $.post(url, myObj, function(responseData){
-  //   console.log(responseData);
-  //   var d = new Date();
-  //   var currentHour = parseInt(d.getHours()); //current hour
-
-  //   //check if current hour is occupied/reserved
-  // });
   $.ajax({  
     type: 'POST',  
     url: 'reservation_status.php', 
@@ -184,7 +175,6 @@ $(document).ready(function() {
     fetch_floor_rooms("Third", this);
     fetch_floor_rooms("Basement", this);
 
-    color_rooms(this, "0");
     color_rooms(this, "1");
 
 });
