@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2017 at 06:43 PM
+-- Generation Time: Dec 02, 2017 at 06:48 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -30,16 +30,17 @@ CREATE TABLE `reservation` (
   `start_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
   `rcs_id` text NOT NULL,
-  `res_id` int(11) NOT NULL
+  `res_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`start_time`, `end_time`, `rcs_id`, `res_id`) VALUES
-('2017-12-02 12:00:00', '2017-12-02 13:00:00', 'hersht', 0),
-('2017-12-02 13:00:00', '2017-12-02 14:00:00', 'hersht', 1);
+INSERT INTO `reservation` (`start_time`, `end_time`, `rcs_id`, `res_id`, `room_id`) VALUES
+('2017-12-02 12:00:00', '2017-12-02 13:00:00', 'hersht', 0, 0),
+('2017-12-02 13:00:00', '2017-12-02 14:00:00', 'hersht', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1058,25 +1059,6 @@ INSERT INTO `room` (`chair_num`, `room_id`, `size`) VALUES
 (9, 997, 'small'),
 (5, 998, 'small'),
 (7, 999, 'large');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `room_reservations`
---
-
-CREATE TABLE `room_reservations` (
-  `res_id` text NOT NULL,
-  `room_id` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `room_reservations`
---
-
-INSERT INTO `room_reservations` (`res_id`, `room_id`) VALUES
-('0', '0'),
-('1', '0');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
