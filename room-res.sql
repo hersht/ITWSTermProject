@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2017 at 01:21 PM
+-- Generation Time: Dec 02, 2017 at 03:08 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -40,7 +40,8 @@ CREATE TABLE `reservation` (
 
 INSERT INTO `reservation` (`start`, `startdate`, `rcs_id`, `res_id`, `room_id`) VALUES
 ('12:00:00', '2017-12-02', 'hersht', 0, 0),
-('13:00:00', '2017-12-02', 'hersht', 1, 0);
+('13:00:00', '2017-12-02', 'hersht', 1, 0),
+('15:00:00', '2017-12-02', 'hersht', 0, 0);
 
 -- --------------------------------------------------------
 
