@@ -62,7 +62,7 @@
               <p>Choose times</p>
               <div id="row1"></div>
               <div id="row2"></div>
-              <input type="reserve" value="Reserve">
+              <input type="submit" value="Reserve">
             </form>
           </div>          
         </div>
@@ -76,9 +76,9 @@
           <span class="close">&times;</span>
           <form action="">
             Enter RCS ID:<br>
-            <input type="text" name="firstname" value="Mickey">
+            <input type="text" name="firstname">
             <br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Go">
           </form> 
       </div>
     </div>

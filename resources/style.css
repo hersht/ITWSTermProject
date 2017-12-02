@@ -88,7 +88,8 @@ body::after {
 .roomBtn{
     font-family: 'Open Sans', sans-serif;
     margin: 0 15px 10px 15px;
-    background: #31bc53;
+    background: red;
+    /*#31bc53*/
     border: solid #196139 0px;
     color: #ffffff;
     font-size: 15px;
@@ -97,11 +98,9 @@ body::after {
 }
 
 .roomBtn:hover{
-  background: #1a783e;
+  background:#a00000;
+  /*#1a783e;*/
   text-decoration: none;
-}
-.reservedBtn{
-    background-color: red;
 }
 
 /* Fade in tabs */

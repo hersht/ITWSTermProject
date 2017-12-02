@@ -106,7 +106,7 @@ function fetch_floor_rooms(floor, element){
 // function color_rooms(element, roomID){
 //   $.ajax({
 //     type: "Post",
-//             url: "room_reservation_status.php",
+//             url: "reservation_status.php",
 //             //dataType: "json",
 //             success: function(responseData, status){
 
@@ -125,6 +125,13 @@ function fetch_floor_rooms(floor, element){
 //   });
 
 // }
+
+function color_rooms(element, roomID){
+  var url = "reservation_status.php";
+  $.post(url, roomID, function(responseData){
+    alert(responseData);
+  });
+}
 
 
 //when a floor tab is clicked, change colors accordingly
@@ -161,7 +168,9 @@ $(document).ready(function() {
     fetch_floor_rooms("First", this);
     fetch_floor_rooms("Second", this);
     fetch_floor_rooms("Third", this);
-    fetch_floor_rooms("Basement", this);   
+    fetch_floor_rooms("Basement", this);
+
+    color_rooms(this, "0"); 
 });
 
 
