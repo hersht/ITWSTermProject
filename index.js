@@ -127,26 +127,6 @@ function fetch_floor_rooms(floor, element){
 // }
 
 
-
-// function openTab(floor,elmnt,color) {
-//     var i, tabcontent, tablinks;
-//     tabcontent = document.getElementsByClassName("tabcontent");
-//     for (i = 0; i < tabcontent.length; i++) {
-//         tabcontent[i].style.display = "none";
-//     }
-//     tablinks = document.getElementsByClassName("tablink");
-//     for (i = 0; i < tablinks.length; i++) {
-//         tablinks[i].style.backgroundColor = "";
-//     }
-//     document.getElementById(floor).style.display = "block";
-//     $("#floor").slideDown();
-
-//     elmnt.style.backgroundColor = color;
-//     if(!document.getElementById(floor).firstElementChild){
-//         fetch_floor_rooms(floor, elmnt);
-//     }
-
-
 //when a floor tab is clicked, change colors accordingly
 function openTab(floor, elmnt) {
   var i, tabcontent, tablinks;
@@ -172,66 +152,16 @@ $(document).ready(function() {
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
     
-
     //load room buttons for each tab
-    //var roomIDs = [001, 002, 003, 004, 101, 102, 103, 104, 201, 202, 203, 204, 301, 302, 303, 304];
     var first = document.getElementById("First");
     var second=document.getElementById("Second");
     var third=document.getElementById("Third");
     var base = document.getElementById("Basement");
 
-
     fetch_floor_rooms("First", this);
     fetch_floor_rooms("Second", this);
     fetch_floor_rooms("Third", this);
-    fetch_floor_rooms("Basement", this);
-    
-    // for(var i = 0; i<roomIDs.length; i++){
-    //   if(roomIDs[i]<100){
-    //     //basement tab
-      
-    //     var btn = document.createElement("BUTTON");
-    //     btn.setAttribute("id",roomIDs[i]);
-    //     btn.setAttribute("class","roomBtn");
-    //     btn.innerHTML = "00"+roomIDs[i];
-    //     base.appendChild(btn);
-    //     btn.onclick = function() { 
-    //       btnClick(this.id); };
-    //   }
-    //   else if(roomIDs[i]<200 && roomIDs[i]>99){
-    //     //first tab
-    //     var btn = document.createElement("BUTTON");
-    //     btn.setAttribute("id",roomIDs[i]);
-    //     btn.setAttribute("class","roomBtn");
-    //     btn.innerHTML = ""+roomIDs[i];
-    //     btn.click(function() {onClick(roomIDs[i])});
-    //     first.appendChild(btn);
-    //     btn.onclick = function() { btnClick(this.id); };
-    //   }
-    //   else if(roomIDs[i]<300 && roomIDs[i]>199){
-    //       //second tab
-    //     var btn = document.createElement("BUTTON");
-    //     btn.setAttribute("id",roomIDs[i]);
-    //     btn.setAttribute("class","roomBtn");
-    //     btn.innerHTML = ""+roomIDs[i];
-    //     btn.click(function() {onClick(roomIDs[i])});
-    //     second.appendChild(btn);
-    //     btn.onclick = function() { btnClick(this.id); };
-    //   }
-    //   else if(roomIDs[i]<400 && roomIDs[i]>299){
-    //     //third tab
-    //     var btn = document.createElement("BUTTON");
-    //     btn.setAttribute("id",roomIDs[i]);
-    //     btn.setAttribute("class","roomBtn");
-    //     btn.innerHTML = ""+roomIDs[i];
-    //     btn.click(function() {onClick(roomIDs[i])});
-    //     third.appendChild(btn);
-    //     btn.onclick = function() { btnClick(this.id); };
-    //   }
-    // }
-
-  
-   
+    fetch_floor_rooms("Basement", this);   
 });
 
 
@@ -264,10 +194,18 @@ $(document).ajaxComplete(function(){
     var modalContent = document.getElementsByClassName("modal-content")[0];
     var modalHead = document.getElementById("modalHead");
     var close = document.getElementsByClassName("close")[0]; //modal close button
+    var close2 = document.getElementsByClassName("close")[1];
     var currentRoom = -1;
     var today = new Date();
     var tomorrow = new Date();
     var chosenDate = today;
+    var viewRes = document.getElementById("viewRes");
+    var viewResModal = document.getElementById("viewResModal");
+
+    viewRes.onclick = function() { 
+      viewResModal.style.display = "block";
+
+    };
 
     //when a room button is clicked, open modal for that room
     function btnClick(id){
@@ -351,7 +289,7 @@ $(document).ajaxComplete(function(){
         button_modify[i].onclick = function() { btnClick(this.id); };
     }
 
-    //close button
+    //close button for main modal
     close.onclick = function(){
       modal.style.display="none";
       document.getElementById("today").innerHTML = "";
@@ -364,6 +302,11 @@ $(document).ajaxComplete(function(){
       while (row.firstChild) {
           row.removeChild(row.firstChild);
       }      
+    }
+
+    //close button for view reservations modal
+    close2.onclick = function(){
+      viewResModal.style.display = "none";
     }
     
     //if user clicks out of modal, close modal
@@ -381,14 +324,10 @@ $(document).ajaxComplete(function(){
             row.removeChild(row.firstChild);
         }
       }
+      if (event.target == viewResModal) {
+        viewResModal.style.display = "none";
+      }
     }
-
-    var reserveBtn = document.getElementById("reserveBtn");
-    reserveBtn.onclick = function() {
-      console.log("reserved"); 
-
-
-    };
 
 });
 

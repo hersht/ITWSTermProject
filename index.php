@@ -10,10 +10,10 @@
 ?>
 <div id="content">
     <div id="header">
-      <h1>RoomRez</h1>
+      <button id="viewRes">View Your Reservations</button>
+      <h1 id="title">RoomRez</h1>
       <p id="intro">Click the tabs below to view study rooms on each floor of the library. Click a room to reserve it. A room appears red below if it is currently occupied, but you can still click it to reserve for later. Happy studying!</p>
     </div>
-
     <div id="roomContent">
       <button class="tablink" onclick="openTab('Basement', this)" id="defaultOpen">Basement</button>
       <button class="tablink" onclick="openTab('First', this)">First</button>
@@ -43,7 +43,7 @@
   <!-- The Modal -->
     <div id="myModal" class="modal">
     <!-- Modal content -->
-      <div class="modal-content">
+      <div class="modal-content" id="mainModalContent">
 
         <span class="close">&times;</span>
         <div id="modalHead">
@@ -53,53 +53,34 @@
 
         <div id="reservationPicker">
           <div id="modalDate" class="reserve">
-            <p>Choose a date</p>
             <form action="">
+              <p>Choose a date</p>
               <select id="dateSelect">
                 <option id="today" class="date" name="date" value="today">
                 <option id= "tomorrow" class="date" name="date" value="tomorrow">
               </select>
-            </form>
-          </div>
-          <div id="modalTime" class="reserve">
-            <p>Choose times</p>
-            <form id="timeSelect">
+              <p>Choose times</p>
               <div id="row1"></div>
               <div id="row2"></div>
-              <!-- <input type="checkbox" name="time" value="Bike" id="0">0:00<br> -->
+              <input type="reserve" value="Reserve">
             </form>
-          </div>
-        </div>
-        <div id="reserveBtn">
-          <button>Reserve</button>
+          </div>          
         </div>
       </div>
+    </div>
 
+    <!-- View Your Reservations Modal -->
+    <div class="modal" id="viewResModal">
+      <!--Content-->
+      <div class="modal-content" id="viewResContent">
+          <span class="close">&times;</span>
+          <form action="">
+            Enter RCS ID:<br>
+            <input type="text" name="firstname" value="Mickey">
+            <br><br>
+            <input type="submit" value="Submit">
+          </form> 
+      </div>
     </div>
   </div>
-<<<<<<< HEAD
 </body>
- 
-
-<?php
-  // We'll need a database connection both for retrieving records and for 
-  // inserting them.  Let's get it up front and use it for both processes
-  // to avoid opening the connection twice.  If we make a good connection, 
-  // we'll change the $dbOk flag.
-  $dbOk = false;
-  
-  /* Create a new database connection object, passing in the host, username,
-     password, and database to use. The "@" suppresses errors. */
-  @ $db = new mysqli('localhost', 'root', 'mypass', 'iit');
-  
-  if ($db->connect_error) {
-    echo '<div class="messages">Could not connect to the database. Error: ';
-    echo $db->connect_errno . ' - ' . $db->connect_error . '</div>';
-  } else {
-    echo '<div class="messages">Could connect to the database. ';
-    $dbOk = true; 
-  }
-?> 
-=======
-</body>
->>>>>>> 036bcc3a5dc39802ea0ee17d7281b8a92932c111
