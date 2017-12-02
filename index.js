@@ -103,6 +103,30 @@ function fetch_floor_rooms(floor, element){
     });
 }
 
+// function color_rooms(element, roomID){
+//   $.ajax({
+//     type: "Post",
+//             url: "room_reservation_status.php",
+//             //dataType: "json",
+//             success: function(responseData, status){
+
+//               var room = document.getElementById(roomID);
+
+//               responseData = JSON.parse(responseData);
+//               console.log(responseData);
+//               //loop through jason
+//               //if room_id=roomID -> if startdate == currentdate -> if starttime == currenttime
+//                 // turn room button red
+
+//             },error: function(msg) {
+//                 // there was a problem
+//                 alert("There was a problem: " + msg.status + " " + msg.statusText);
+//             }
+//   });
+
+// }
+
+
 
 // function openTab(floor,elmnt,color) {
 //     var i, tabcontent, tablinks;
@@ -258,6 +282,32 @@ $(document).ajaxComplete(function(){
       document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getUTCMonth()+1).toString()+"/"+(tomorrow.getUTCDate()).toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
       modal.style.display = "block";
       createTimeTable();
+      prevHoursUnavail();
+    }
+
+    function prevHoursUnavail(){
+      enableAllTimes();
+      var d = new Date();
+      var currentHour = d.getHours();
+      var times = document.getElementsByClassName('timebox');
+      for(var i = 0; i<times.length; i++){
+        id = parseInt(times[i].id);
+        if(id<currentHour && chosenDate.getUTCDate() == today.getUTCDate()){
+          times[i].disabled = true;
+          txt = document.getElementById("txt"+i);
+          txt.style.color = "lightgrey";
+        }
+      }
+    }
+
+    function enableAllTimes(){
+      var times = document.getElementsByClassName('timebox');
+      for(var i = 0; i<times.length; i++){
+        id = parseInt(times[i].id);
+        times[i].disabled = false;
+        txt = document.getElementById("txt"+i);
+        txt.style.color = "black";
+      }
     }
 
     function createTimeTable(){
@@ -269,6 +319,7 @@ $(document).ajaxComplete(function(){
         x.setAttribute("id", i);
         x.setAttribute("class", "timebox");
         var t = document.createElement("P");
+        t.setAttribute("id", "txt"+i);
         t.innerHTML = i+":00"; 
         var append;
         if(i<13){
@@ -290,9 +341,9 @@ $(document).ajaxComplete(function(){
       else if(dateVal=="tomorrow"){
         chosenDate = tomorrow;
       }
-      console.log(chosenDate);
-    }
+      prevHoursUnavail();
 
+    }
 
 
     var button_modify = document.getElementsByClassName('roomBtn');
