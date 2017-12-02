@@ -128,13 +128,23 @@ function fetch_floor_rooms(floor, element){
 
 function color_rooms(element, roomID){
   var url = "reservation_status.php";
-  $.post(url, roomID, function(responseData){
-    console.log(responseData);
-    var d = new Date();
-    var currentHour = parseInt(d.getHours()); //current hour
+  var myObj = {room_id: "roomID"};
 
-    //check if current hour is occupied/reserved
-  });
+  // $.post(url, myObj, function(responseData){
+  //   console.log(responseData);
+  //   var d = new Date();
+  //   var currentHour = parseInt(d.getHours()); //current hour
+
+  //   //check if current hour is occupied/reserved
+  // });
+  $.ajax({  
+    type: 'POST',  
+    url: 'reservation_status.php', 
+    data: {room_id: roomID},
+    success: function(response) {
+        console.log(response);
+    }
+});
 }
 
 
