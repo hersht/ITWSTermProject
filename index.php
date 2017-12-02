@@ -47,25 +47,29 @@
 
         <span class="close">&times;</span>
         <div id="modalHead">
-          <p id="modalTitle" style="font-size: 25px;"></p>
-          <p id="modalIntro">Choose a date and time to reserve. You can reserve a room for today or tomorrow. Be sure to check ALL blocks you would like to reserve for the selected day. Only available times are displayed.</p>
+          <p id="modalTitle" style="font-size: 25px; font-weight: bold;"></p>
+          <p id="modalIntro">Choose a date and time to reserve. You can reserve a room for today or tomorrow. Be sure to check ALL blocks you would like to reserve for the selected day.</p>
         </div>
 
         <div id="reservationPicker">
           <div id="modalDate" class="reserve">
             <p>Choose a date</p>
             <form action="">
-              <select id="dateSelect" onchange="">
+              <select id="dateSelect">
                 <option id="today" class="date" name="date" value="today">
-                <option id= "tomorrow" class="date" type="radio" name="date" value="tomorow">
+                <option id= "tomorrow" class="date" name="date" value="tomorrow">
               </select>
             </form>
           </div>
           <div id="modalTime" class="reserve">
             <p>Choose times</p>
+            <form id="timeSelect">
+              <div id="row1"></div>
+              <div id="row2"></div>
+              <!-- <input type="checkbox" name="time" value="Bike" id="0">0:00<br> -->
+            </form>
           </div>
         </div>
-
         <div id="reserveBtn">
           <button>Reserve</button>
         </div>
@@ -73,6 +77,7 @@
 
     </div>
   </div>
+<<<<<<< HEAD
 </body>
  
 
@@ -95,3 +100,6 @@
     $dbOk = true; 
   }
 ?> 
+=======
+</body>
+>>>>>>> 036bcc3a5dc39802ea0ee17d7281b8a92932c111
