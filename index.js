@@ -129,7 +129,11 @@ function fetch_floor_rooms(floor, element){
 function color_rooms(element, roomID){
   var url = "reservation_status.php";
   $.post(url, roomID, function(responseData){
-    alert(responseData);
+    console.log(responseData);
+    var d = new Date();
+    var currentHour = parseInt(d.getHours()); //current hour
+
+    //check if current hour is occupied/reserved
   });
 }
 
@@ -170,7 +174,9 @@ $(document).ready(function() {
     fetch_floor_rooms("Third", this);
     fetch_floor_rooms("Basement", this);
 
-    color_rooms(this, "0"); 
+    color_rooms(this, "0");
+    color_rooms(this, "1");
+
 });
 
 
