@@ -3,7 +3,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "bulldog1";
+$password = "mypass";
 $dbname = "room-res";
 
 
