@@ -90,7 +90,7 @@
   
   /* Create a new database connection object, passing in the host, username,
      password, and database to use. The "@" suppresses errors. */
-  @ $db = new mysqli('localhost', 'root', 'cestlafin1', 'iit');
+  @ $db = new mysqli('localhost', 'root', 'mypass', 'iit');
   
   if ($db->connect_error) {
     echo '<div class="messages">Could not connect to the database. Error: ';

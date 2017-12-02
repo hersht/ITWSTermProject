@@ -58,8 +58,8 @@ CREATE TABLE `Room` (
 --
 
 CREATE TABLE `reservation` (
-  `start_time` datetime NOT NULL,
-  `end_time` datetime NOT NULL,
+  `start` time NOT NULL,
+  'startdate' date NOT NULL,
   `rcs_id` text NOT NULL,
   `res_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL
