@@ -128,14 +128,14 @@ function fetch_floor_rooms(floor, element){
 
 function color_rooms(element, roomID){
   var url = "reservation_status.php";
-  $.ajax({
-    type:'POST',
-    url:'reservation_status.php',
+  $.ajax({  
+    type: 'POST',  
+    url: 'reservation_status.php', 
     data: {room_id: roomID},
-    success: function(response){
-      console.log(response);
+    success: function(response) {
+        console.log(response);
     }
-  });
+});
 }
 
 

@@ -3,7 +3,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "mypass";
+$password = "bulldog1";
 $dbname = "room-res";
 
 
@@ -16,18 +16,19 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 } 
 
-
 $room = $_POST['room_id'];
 
+
+echo "ROOM: ".$room."<br>";
 $today = date("Y-m-d");
 date_default_timezone_set("America/New_York");
 $curr_time = date("h:i:sa");
 $curr_military_time = date("H:i", strtotime($curr_time));
+//echo "MILITARY TIME: ".$curr_military_time;
 $closest_hour = date('H')+1;
 $hours = [];
 $reserved_hours = [];
 echo $curr_military_time;
-
 
 $sql = "SELECT * FROM `reservation` WHERE startdate='$today' AND start>='$curr_military_time' AND room_id = '$room'";
 $result = $conn->query($sql);
