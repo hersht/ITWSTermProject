@@ -74,12 +74,15 @@
       <!--Content-->
       <div class="modal-content" id="viewResContent">
           <span class="close">&times;</span>
-          <form action="">
+          <form id="viewResForm">
             Enter RCS ID:<br>
-            <input type="text" name="firstname">
+            <input type="text" name="RCS" id="rcs_data">
             <br><br>
-            <input type="submit" value="Go">
+            <input type="submit" value="Go" onclick ="showRes()" id="rcs_button">
           </form> 
+          <table style = 'width: 100%' id = 'resByRCSTable'>
+            Reservations
+          </table>
       </div>
     </div>
   </div>

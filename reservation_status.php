@@ -3,7 +3,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "bulldog1";
+$password = "mypass";
 $dbname = "room-res";
 
 
@@ -18,11 +18,9 @@ if ($conn->connect_error) {
 
 $room = $_POST['room_id'];
 
-<<<<<<< HEAD
+
 echo "Current PHP Version: ".phpversion()."<br>";
 $room = $_POST["room_id"];
-=======
->>>>>>> 6c6cb8def62e380b682d268dd9c9c6fe99c418a9
 
 echo "ROOM: ".$room."<br>";
 $today = date("Y-m-d");
