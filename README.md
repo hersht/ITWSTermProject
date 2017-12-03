@@ -43,7 +43,7 @@
 `reserve.php`
 
 ###### Data input
-`sample.php` is an one time random script gives a sense to pour data into databse
-
+`sample.php` is an one time random script gives a sense to pour data into databse</br>
+***DONT RUN `sample.php` IN ANY CASE, IT WILL CRASH UR DATABASE***
 
 
