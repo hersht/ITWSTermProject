@@ -190,8 +190,8 @@ function disable_rooms(element, roomID, chosenDate){
     data: {"room_id": roomID},
     success: function(response) {
       var array = [];
-      // response = JSON.parse('{"hours":[19,20,21,23]}');
-      response = JSON.parse(response);
+      response = JSON.parse('{"hours":[19,20,21,23]}');
+      //response = JSON.parse(response);
       var d = new Date();
       var currentHour = parseInt(d.getHours());
       var hrs = response.hours;
@@ -267,33 +267,25 @@ function resByRCSID(element, rcsId){
     url: 'display_reservation.php',
     data: {'rcs_id': rcsId},
     success: function(response) {
-      alert(response);
-      
-      // var output = "<br/>";
-      // output+="<br/>";
-      // output+="<br/>";
-
-      // output+="<tr>";
-      // output+="<th> Res ID </th>";
-      // output+="<th> Room ID </th>";
-      // output+="<th> Number of Chairs </th>";
-      // output+="<th> Size </th>";
-      // output+="</tr>";
-      // output+="<br/>";
-
-
-      // $.each(response.Reservations, function(i, item) {
-      //   alert(item[0]);
-      //   output+="<tr>";
-      //   output+="<td>" + item[0] + "</td>";
-      //   output+="<td>" + item[1] + "</td>";
-      //   output+="<td>" + item[2] + "</td>";
-      //   output+="<td>" + item[3] + "</td>";
-      //   output+="</tr>";
-      // });
-
-      // alert(output);
-
+      response = JSON.parse(response);
+      var res = response.Reservations;
+      if(res.length == 0){
+        var txt = document.getElementById("resByRCSTxt");
+        txt.innerHTML = ("No reservations found");
+      }
+      var table = document.getElementById("resByRCSTable");
+      for(var i =0; i<res.length; i++){
+        var room = res[i][1];
+        var day = res[i][2];
+        var time = res[i][3];
+        var row = table.insertRow(i+1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = room;
+        cell2.innerHTML = day;
+        cell3.innerHTML = time;
+      }
     }
   });
 }
@@ -339,7 +331,12 @@ $(document).ready(function() {
 
 function showRes() {
   var data = document.getElementById("rcs_data").value;
-  resByRCSID(this, data);
+  if(data === ""){
+    alert("Please enter your RCS ID");
+  }
+  else{
+    resByRCSID(this, data);
+  }
 } 
 
 
@@ -398,7 +395,7 @@ $(document).ajaxComplete(function(){
       modal.style.display = "block";
       createTimeTable();
       prevHoursUnavail();
-      disable_rooms(this, currentRoom);
+      disable_rooms(this, currentRoom, "today");
     }
 
     function prevHoursUnavail(){
@@ -454,16 +451,16 @@ $(document).ajaxComplete(function(){
 
     document.getElementById("dateSelect").onchange = function() {
       var dateVal = document.getElementById("dateSelect").value; 
-      if(dateVal=="today"){
+      if(dateVal==="today"){
         chosenDate = today;
       }
-      else if(dateVal=="tomorrow"){
+      else if(dateVal==="tomorrow"){
         tomorrow.setDate(today.getDate() + 1);
         chosenDate = tomorrow;
       }
       console.log(chosenDate);
       prevHoursUnavail();
-      disable_rooms(this, currentRoom, chosenDate);
+      disable_rooms(this, currentRoom, dateVal);
     }
 
 
@@ -490,6 +487,13 @@ $(document).ajaxComplete(function(){
     //close button for view reservations modal
     close2.onclick = function(){
       viewResModal.style.display = "none";
+      var x = document.getElementById("resByRCSTable").rows.length;
+      for(var i = 1; i<x; i++){
+        document.getElementById("resByRCSTable").deleteRow(1);
+      }
+      var txt = document.getElementById("resByRCSTxt");
+      txt.innerHTML = ("");
+      document.getElementById("rcs_data").value = "";
     }
     
     //if user clicks out of modal, close modal
@@ -509,6 +513,13 @@ $(document).ajaxComplete(function(){
       }
       if (event.target == viewResModal) {
         viewResModal.style.display = "none";
+        var x = document.getElementById("resByRCSTable").rows.length;
+        for(var i = 1; i<x; i++){
+          document.getElementById("resByRCSTable").deleteRow(1);
+        }
+        var txt = document.getElementById("resByRCSTxt");
+        txt.innerHTML = ("");
+        document.getElementById("rcs_data").value = "";
       }
     }
 
