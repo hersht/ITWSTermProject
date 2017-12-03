@@ -16,7 +16,6 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 } 
 
-$room = $_POST['room_id'];
 
 
 //echo "Current PHP Version: ".phpversion()."<br>";
@@ -31,7 +30,7 @@ $curr_military_time = date("H:00:00", strtotime($curr_time));
 $closest_hour = date('H');
 $hours = [];
 $reserved_hours = [];
-//echo $curr_military_time;
+
 
 $sql = "SELECT * FROM `reservation` WHERE startdate='$today' AND start>='$curr_military_time' AND room_id = '$room'";
 $result = $conn->query($sql);
