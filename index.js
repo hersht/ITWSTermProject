@@ -16,7 +16,7 @@ function fetch_floor_rooms(floor, element){
                 output+="<br/>";
                 output+="<br/>";
 
-                 var curr_table;
+                var curr_table;
                 if(floor === "Basement"){
                    curr_table =  "<table style = 'width: 100%' id = 'BasementBasement'>";
                 }
@@ -148,7 +148,7 @@ function disable_rooms(element, roomID, chosenDate){
     success: function(response) {
       var array = [];
       // response = JSON.parse('{"hours":[19,20,21,23]}');
-      response = JSON.parse(reponse);
+      response = JSON.parse(response);
       var d = new Date();
       var currentHour = parseInt(d.getHours());
       var hrs = response.hours;
@@ -175,6 +175,45 @@ function turnGreen(buttonID){
   var button = document.getElementById(buttonID);
   button.style.backgroundColor="#31bc53";
 }
+
+function resByRCSID(element, rcsId){
+  var url = "display_reservation.php";
+  $.ajax({
+    type: 'POST',  
+    url: 'display_reservation.php',
+    data: {'rcs_id': rcsId},
+    success: function(response) {
+      alert(response);
+      
+      // var output = "<br/>";
+      // output+="<br/>";
+      // output+="<br/>";
+
+      // output+="<tr>";
+      // output+="<th> Res ID </th>";
+      // output+="<th> Room ID </th>";
+      // output+="<th> Number of Chairs </th>";
+      // output+="<th> Size </th>";
+      // output+="</tr>";
+      // output+="<br/>";
+
+
+      // $.each(response.Reservations, function(i, item) {
+      //   alert(item[0]);
+      //   output+="<tr>";
+      //   output+="<td>" + item[0] + "</td>";
+      //   output+="<td>" + item[1] + "</td>";
+      //   output+="<td>" + item[2] + "</td>";
+      //   output+="<td>" + item[3] + "</td>";
+      //   output+="</tr>";
+      // });
+
+      // alert(output);
+
+    }
+  });
+}
+
 
 
 //when a floor tab is clicked, change colors accordingly
@@ -212,8 +251,12 @@ $(document).ready(function() {
     fetch_floor_rooms("Second", this);
     fetch_floor_rooms("Third", this);
     fetch_floor_rooms("Basement", this);
-
 });
+
+function showRes() {
+  var data = document.getElementById("rcs_data").value;
+  resByRCSID(this, data);
+} 
 
 
 
@@ -255,7 +298,6 @@ $(document).ajaxComplete(function(){
 
     viewRes.onclick = function() { 
       viewResModal.style.display = "block";
-
     };
 
     //when a room button is clicked, open modal for that room
