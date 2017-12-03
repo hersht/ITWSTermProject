@@ -10,23 +10,23 @@
 * Rutvik Manohar
 
 ###### Structures
-.
-├── README.md
-├── display_reservation.php
-├── includes
-│   ├── head.inc.php
-│   └── init.inc.php
-├── index.js
-├── index.php
-├── reservation_status.php
-├── reserve.php
-├── resources
-│   ├── jquery-3.1.1.min.js
-│   ├── library.jpg
-│   └── style.css
-├── room-res.sql
-├── room_reservation_display.php
-└── tree.md
+.</br>
+├── README.md</br>
+├── display_reservation.php</br>
+├── includes</br>
+│   ├── head.inc.php</br>
+│   └── init.inc.php</br>
+├── index.js</br>
+├── index.php</br>
+├── reservation_status.php</br>
+├── reserve.php</br>
+├── resources</br>
+│   ├── jquery-3.1.1.min.js</br>
+│   ├── library.jpg</br>
+│   └── style.css</br>
+├── room-res.sql</br>
+├── room_reservation_display.php</br>
+└── tree.md</br>
 
 ###### SQL Database
 `room-res.sql` is the sql file for import</br>
