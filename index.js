@@ -183,15 +183,14 @@ function color_rooms(element, roomID){
 // }
 
 function disable_rooms(element, roomID, chosenDate){
-  console.log("disabled"+roomID);
   $.ajax({  
     type: 'POST',  
     url: 'reservation_status.php', 
     data: {"room_id": roomID},
     success: function(response) {
       var array = [];
-      response = JSON.parse('{"hours":[19,20,21,23]}');
-      //response = JSON.parse(response);
+      //response = JSON.parse('{"hours":[19,20,21,23]}');
+      response = JSON.parse(response);
       var d = new Date();
       var currentHour = parseInt(d.getHours());
       var hrs = response.hours;
@@ -458,7 +457,6 @@ $(document).ajaxComplete(function(){
         tomorrow.setDate(today.getDate() + 1);
         chosenDate = tomorrow;
       }
-      console.log(chosenDate);
       prevHoursUnavail();
       disable_rooms(this, currentRoom, dateVal);
     }
@@ -481,7 +479,16 @@ $(document).ajaxComplete(function(){
       row = document.getElementById("row2");
       while (row.firstChild) {
           row.removeChild(row.firstChild);
-      }      
+      }
+      var val = "today";
+      var sel = document.getElementById('dateSelect');
+      var opts = sel.options;
+      for (var opt, j = 0; opt = opts[j]; j++) {
+        if (opt.value == val) {
+          sel.selectedIndex = j;
+          break;
+        }
+      }
     }
 
     //close button for view reservations modal
@@ -509,6 +516,15 @@ $(document).ajaxComplete(function(){
         row = document.getElementById("row2");
         while (row.firstChild) {
             row.removeChild(row.firstChild);
+        }
+        var val = "today";
+        var sel = document.getElementById('dateSelect');
+        var opts = sel.options;
+        for (var opt, j = 0; opt = opts[j]; j++) {
+          if (opt.value == val) {
+            sel.selectedIndex = j;
+            break;
+          }
         }
       }
       if (event.target == viewResModal) {

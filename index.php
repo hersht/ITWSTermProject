@@ -1,12 +1,10 @@
 <?php 
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
-  // include('includes/functions.inc.php'); // functions
 ?>
 <title>RoomRez Home</title>
 
 <?php 
-  include('includes/head.inc.php'); 
-  // include global css, javascript, end the head and open the body
+  include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 <div id="content">
     <div id="header">
@@ -21,26 +19,22 @@
       <button class="tablink" onclick="openTab('Third', this)">Third</button>
 
       <div id="Basement" class="tabcontent">
-  <!--      <h3>Basement</h3>-->
         <ul id="baseTab"></ul>
       </div>
 
       <div id="First" class="tabcontent">
-  <!--      <h3>First Floor</h3>-->
         <ul id="firstTab"></ul>
       </div>
 
       <div id="Second" class="tabcontent">
-  <!--      <h3>Second Floor</h3>-->
         <ul id="secondTab"></ul>
       </div>
 
       <div id="Third" class="tabcontent">
-  <!--      <h3>Third Floor</h3>-->
         <ul id="thirdTab"></ul>
       </div>
     </div>
-  <!-- The Modal -->
+  <!-- The Reservation Modal -->
     <div id="myModal" class="modal">
     <!-- Modal content -->
       <div class="modal-content" id="mainModalContent">
@@ -50,7 +44,7 @@
           <p id="modalTitle" style="font-size: 25px; font-weight: bold;"></p>
           <p id="modalIntro">Choose a date and time to reserve. You can reserve a room for today or tomorrow. Be sure to check ALL blocks you would like to reserve for the selected day.</p>
         </div>
-
+        <!-- Choose resrvation time/day -->
         <div id="reservationPicker">
           <div id="modalDate" class="reserve">
             <form action=""> 
@@ -71,7 +65,6 @@
               <br/>
               <input type="submit" value="Reserve" onclick = "reserve(document.getElementById('rcs_id_val').value,  
               document.getElementById('row1'), document.getElementById('row2'), document.getElementById('dateSelect'), document.getElementById('modalTitle').innerHTML)">
-              
             </form>
           </div>          
         </div>
@@ -85,12 +78,11 @@
           <span class="close">&times;</span>
           <div id="viewResForm">
             Enter RCS ID:<br>
-
             <input type="text" name="RCS" id="rcs_data">
-
             <br><br>
             <button onclick ="showRes()" id="rcs_button">Go</button>
           </div> 
+          <!--Table to display reservations -->
           <table style = 'width: 100%' id = 'resByRCSTable'>
             <tr>
               <td>Room</td>

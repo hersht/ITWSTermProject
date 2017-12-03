@@ -17,6 +17,8 @@ body::after {
   z-index: -1;   
 }
 
+
+/*Homepage styling ------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 #title{
     margin-left: 10%;
 }
@@ -97,28 +99,12 @@ body::after {
     text-decoration: none;
 }
 
-.roomBtn:hover{
-  background:#a00000;
-  /*#1a783e;*/
-  text-decoration: none;
-}
-
-/* Fade in tabs */
-@-webkit-keyframes fadeEffect {
-    from {opacity: 0.5;}
-    to {opacity: 1;}
-}
-
-@keyframes fadeEffect {
-    from {opacity: 0.5;}
-    to {opacity: 1;}
-}
-
 #Basement {background-color: rgba(245,245,245,0.7)}
 #First {background-color:rgba(245,245,245,0.7)}
 #Second {background-color:rgba(245,245,245,0.7)}
 #Third {background-color:rgba(245,245,245,0.7)}
 
+/* Reservation Modal Box ----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -136,12 +122,6 @@ body::after {
     height: 100%; /* Full height */
 }
 
-#viewResModal{
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-}
-
-/* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
     margin: 6% auto; /* 6% from the top and centered */
@@ -155,16 +135,11 @@ body::after {
     height: 500px;
 }
 
-#viewResContent{
-    width: 20%;
-    height: 300px;
-}
 
 .modalHead{
     font-size: 20px;
-/*    padding-left: 25%;
-    padding-right:25%;*/
 }
+
 .modalIntro{
     padding-top: 5px;
     padding-right: 20px;
@@ -175,11 +150,6 @@ body::after {
     margin-right: 20%;
     margin-left: 20%;
 }
-
-/*.reserve{
-    display:flex;
-    flex-direction:column;
-}*/
 
 #row1{
     display:flex;
@@ -226,4 +196,16 @@ body::after {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+/* View Your Reservation Modal -------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+#viewResContent{
+    width: 20%;
+    height: 300px;
+}
+
+#viewResModal{
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
 }
