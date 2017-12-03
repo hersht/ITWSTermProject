@@ -85,9 +85,10 @@ function color_rooms(element, roomID){
   $.ajax({  
     type: 'POST',  
     url: 'reservation_status.php', 
-    data: {"room_id": roomID},
+    data: {"room_id": roomID, "day":"today"},
     success: function(response) {
       var d = new Date();
+      console.log("COLOR RESPONSE: " +roomID+response);
       var currentHour = parseInt(d.getHours());
       response = JSON.parse(response);
       var array = response.hours;
@@ -170,9 +171,8 @@ function disable_rooms(element, roomID, chosenDate){
   }
 }
 
-
 //get all selected times
-function reserve(rcs_id, first_row_times, second_row_times, date, room_id_str){
+function reserve(rcs_id, first_row_times, second_row_times, date, room_id_str, modal){
   var time_arr = [];
   boxes = document.getElementsByClassName("timebox");
   for(var x = 0; x < boxes.length; ++x){
@@ -189,6 +189,30 @@ function reserve(rcs_id, first_row_times, second_row_times, date, room_id_str){
       console.log("RESERVE RESPONSE: " + response);
     }
   });
+
+
+  alert("Reserved room " + room_id_str + " successfully.");
+  // modal.style.display="none";
+  //     document.getElementById("today").innerHTML = "";
+  //     document.getElementById("tomorrow").innerHTML = "";
+  //     var row = document.getElementById("row1");
+  //     while (row.firstChild) {
+  //         row.removeChild(row.firstChild);
+  //     }
+  //     row = document.getElementById("row2");
+  //     while (row.firstChild) {
+  //         row.removeChild(row.firstChild);
+  //     }      
+  //       var val = "today";
+  //       var sel = document.getElementById('dateSelect');
+  //       var opts = sel.options;
+  //       for (var opt, j = 0; opt = opts[j]; j++) {
+  //         if (opt.value == val) {
+  //           sel.selectedIndex = j;
+  //           break;
+  //         }
+  //       }
+  window.location.reload(false); 
 }
 
 

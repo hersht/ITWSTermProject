@@ -64,7 +64,10 @@
               <br/>
               <br/>
               <input type="submit" value="Reserve" onclick = "reserve(document.getElementById('rcs_id_val').value,  
-              document.getElementById('row1'), document.getElementById('row2'), document.getElementById('dateSelect'), document.getElementById('modalTitle').innerHTML)">
+              document.getElementById('row1'), document.getElementById('row2'), document.getElementById('dateSelect'), 
+              document.getElementById('modalTitle').innerHTML), document.getElementById('reservationPicker')">
+              
+
             </form>
           </div>          
         </div>
