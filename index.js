@@ -180,15 +180,38 @@ function reserve(rcs_id, first_row_times, second_row_times, date, room_id_str, m
       time_arr[time_arr.length] = String(boxes[x].value);
     }
   }
+
+   console.log("TIME ARR: " + time_arr);
+   room_params = room_id_str.split(" ");
+ 
+   console.log("RCS ID: " + rcs_id);
+   console.log("TIMES: " + time_arr);
+   console.log("DATE: " + date.value);
+   console.log("ROOM ID: " + room_params[1]);
   //insert reservations into data base
-  $.ajax({  
-    type: 'POST',  
-    url: 'reserve.php', 
-    data: {"rcs_id": rcs_id, "times": time_arr,"date": date.value, "room_id": room_params[1]},
-    success: function(response) {
-      console.log("RESERVE RESPONSE: " + response);
-    }
-  });
+
+   $.ajax({  
+      type: 'POST',  
+      url: 'reserve.php',
+      data: {"rcs_id": rcs_id, "times": time_arr, "date": date.value, "room_id": room_params[1]},
+      success: function(response) {
+        console.log("YES");
+      },
+       error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+    });
+
+
+  // $.ajax({  
+  //   type: 'POST',  
+  //   url: 'reserve.php', 
+  //   data: {"rcs_id": rcs_id, "times": time_arr,"date": date.value, "room_id": room_params[1]},
+  //   success: function(response) {
+  //     console.log("RESERVE RESPONSE: " + response);
+  //   }
+  // });
 
 
   alert("Reserved room " + room_id_str + " successfully.");

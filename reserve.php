@@ -1,12 +1,13 @@
 <?php
 
+echo "REACHES THIS FILE:";
 $servername = "localhost";
 $username = "root";
 $password = "cestlafin1";
 $dbname = "room-res";
 
 
-
+echo "HERE:";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -32,10 +33,10 @@ else if($date_to_reserve == "tomorrow"){
 	$date_to_reserve = date("Y-m-d", strtotime("+1 day"));
 }
 
-// echo "DATE: ".$date_to_reserve;
+ echo "DATE: ".$date_to_reserve;
  echo "TIMES: ".$times_arr;
-// echo "RCS ID: ".$rcs_identification;
-// echo "ROOM: ".$room;
+ echo "RCS ID: ".$rcs_identification;
+ echo "ROOM: ".$room;
 
 
 for($i = 0; $i < count($times_arr); ++$i){
