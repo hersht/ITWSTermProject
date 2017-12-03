@@ -59,7 +59,7 @@
               
               <form action="">
                 Enter RCS ID:<br>
-              <input type="text" name="firstname" id = "rcs_id_val">
+              <input type="text" name="rcsid" id = "rcs_id_val">
               </form> 
               <br/>
               <br/>
