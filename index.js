@@ -277,9 +277,9 @@ function resByRCSID(element, rcsId){
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
-        cell1.innerHTML = room;
+        cell1.innerHTML = time;
         cell2.innerHTML = day;
-        cell3.innerHTML = time;
+        cell3.innerHTML = room;
       }
     }
   });
