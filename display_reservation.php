@@ -1,7 +1,7 @@
 <?php
 	$dbOk = false;
   
-	@ $db = new mysqli('localhost', 'root', 'mypass', 'room-res');
+	@ $db = new mysqli('localhost', 'root', 'cestlafin1', 'room-res');
 	  
 	if ($db->connect_error) {
 		echo '<div class="messages">Could not connect to the database. Error: ';
