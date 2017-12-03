@@ -76,7 +76,9 @@
           <span class="close">&times;</span>
           <form id="viewResForm">
             Enter RCS ID:<br>
+
             <input type="text" name="RCS" id="rcs_data">
+
             <br><br>
             <input type="submit" value="Go" onclick ="showRes()" id="rcs_button">
           </form> 
