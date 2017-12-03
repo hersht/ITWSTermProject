@@ -5,7 +5,8 @@ $servername = "localhost";
 $username = "root";
 
 
-$password = "cestlafin1";
+
+$password = "mypass";
 $dbname = "room-res";
 
 

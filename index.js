@@ -184,9 +184,6 @@ function color_rooms(element, roomID){
 // }
 
 function disable_rooms(element, roomID, chosenDate){
-
-
-  console.log("disabled"+roomID);
   if(chosenDate === "today"){
     $.ajax({  
       type: 'POST',  
@@ -212,7 +209,6 @@ function disable_rooms(element, roomID, chosenDate){
           var txt = document.getElementById("txt"+array[i]);
           box.disabled = true;
           txt.style.color = 'lightgrey';
-
         }
       }
     });
@@ -519,7 +515,6 @@ $(document).ajaxComplete(function(){
         tomorrow.setDate(today.getDate() + 1);
         chosenDate = tomorrow;
       }
-      console.log(chosenDate);
       prevHoursUnavail();
       //console.log("ABOUT TO CHANGE: " + currentRoom);
        var title = document.getElementById("modalTitle").innerHTML;
@@ -546,16 +541,16 @@ $(document).ajaxComplete(function(){
       row = document.getElementById("row2");
       while (row.firstChild) {
           row.removeChild(row.firstChild);
-      }      
-        var val = "today";
-        var sel = document.getElementById('dateSelect');
-        var opts = sel.options;
-        for (var opt, j = 0; opt = opts[j]; j++) {
-          if (opt.value == val) {
-            sel.selectedIndex = j;
-            break;
-          }
+      }
+      var val = "today";
+      var sel = document.getElementById('dateSelect');
+      var opts = sel.options;
+      for (var opt, j = 0; opt = opts[j]; j++) {
+        if (opt.value == val) {
+          sel.selectedIndex = j;
+          break;
         }
+      }
     }
 
     //close button for view reservations modal
