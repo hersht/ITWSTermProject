@@ -192,26 +192,6 @@ function reserve(rcs_id, first_row_times, second_row_times, date, room_id_str, m
 
 
   alert("Reserved room " + room_id_str + " successfully.");
-  // modal.style.display="none";
-  //     document.getElementById("today").innerHTML = "";
-  //     document.getElementById("tomorrow").innerHTML = "";
-  //     var row = document.getElementById("row1");
-  //     while (row.firstChild) {
-  //         row.removeChild(row.firstChild);
-  //     }
-  //     row = document.getElementById("row2");
-  //     while (row.firstChild) {
-  //         row.removeChild(row.firstChild);
-  //     }      
-  //       var val = "today";
-  //       var sel = document.getElementById('dateSelect');
-  //       var opts = sel.options;
-  //       for (var opt, j = 0; opt = opts[j]; j++) {
-  //         if (opt.value == val) {
-  //           sel.selectedIndex = j;
-  //           break;
-  //         }
-  //       }
   window.location.reload(false); 
 }
 
