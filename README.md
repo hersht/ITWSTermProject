@@ -10,6 +10,7 @@
 * Rutvik Manohar
 
 ###### Structures
+
 .</br>
 ├── README.md</br>
 ├── display_reservation.php</br>
@@ -27,6 +28,7 @@
 ├── room-res.sql</br>
 ├── room_reservation_display.php</br>
 └── tree.md</br>
+=======
 
 ###### SQL Database
 `room-res.sql` is the sql file for import</br>
