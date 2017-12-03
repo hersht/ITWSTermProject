@@ -35,9 +35,9 @@
 			$curr_size = $randArray[$curr_rand];
 			$curr_num_chairs = rand(1, 10);
 
-//			 " INSERT INTO mytable VALUES ( 1 , '$name') "
+
 			$sql = "INSERT INTO Room VALUES ($curr_num_chairs, $i, '$curr_size')";
-			//echo $sql;
+		
 
 			if ($conn->query($sql) === TRUE) {
     			echo "New record created successfully";

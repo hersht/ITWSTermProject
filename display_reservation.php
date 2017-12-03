@@ -21,7 +21,7 @@
 	$stmt = $db->prepare("SELECT reservation.res_id, reservation.start, reservation.startdate, reservation.room_id FROM `reservation` WHERE reservation.rcs_id = ?");
 	$stmt->bind_param("s", $RCS);
 
-	$RCS = $_POST["rcs_id"];
+	$RCS = htmlspecialchars($_POST["rcs_id"]);
 
 	$reservs = [];
 
