@@ -1,3 +1,7 @@
+
+
+
+
 function fetch_floor_rooms(floor, element){
     //alert("YO");
     //console.log("HELLO");
@@ -10,7 +14,7 @@ function fetch_floor_rooms(floor, element){
 
                 //console.log("HELLO");
                 responseData = JSON.parse(responseData);
-                console.log(responseData);
+                //console.log(responseData);
                 //console.log(responseData['Floors']);
                 var output = "<br/>";
                 output+="<br/>";
@@ -32,7 +36,7 @@ function fetch_floor_rooms(floor, element){
 
 
                 
-                console.log(curr_table);
+                //console.log(curr_table);
                 output+=curr_table;
                 output+="<tr>";
                // output+="<h3 id = 'room'>Room ID   &nbsp; &nbsp; &nbsp; Number of Chairs   &nbsp; &nbsp; &nbsp;   Size</h3>";
@@ -62,7 +66,7 @@ function fetch_floor_rooms(floor, element){
                             curr_floor = responseData["Floors"][3];
                         }
 
-                        console.log(curr_floor);
+                        //console.log(curr_floor);
                         //output += "<p>" + floor + "</p>";
                         output += "<br/>";
                         for(var i = 0; i < curr_floor.length; ++i){
@@ -94,7 +98,23 @@ function fetch_floor_rooms(floor, element){
                  output += "</table>";
                 //console.log(output);
                 $(output).appendTo(document.getElementById(floor));
-               
+
+                if(floor === "Third"){
+                  for(var i =0; i<5; i++){
+                    var id = i.toString();
+                    color_rooms(this, ""+i);
+                  }
+                  for(var i =10; i<15; i++){
+                   color_rooms(this, ""+i); 
+                  }
+                  for(var i =20; i<25; i++){
+                    color_rooms(this, ""+i);
+                  }
+                  for(var i =30; i<35; i++){
+                    color_rooms(this, ""+i);
+                  }
+                }
+                 
 
             },error: function(msg) {
                     // there was a problem
@@ -103,29 +123,6 @@ function fetch_floor_rooms(floor, element){
     });
 }
 
-// function color_rooms(element, roomID){
-//   $.ajax({
-//     type: "Post",
-//             url: "reservation_status.php",
-//             //dataType: "json",
-//             success: function(responseData, status){
-
-//               var room = document.getElementById(roomID);
-
-//               responseData = JSON.parse(responseData);
-//               console.log(responseData);
-//               //loop through jason
-//               //if room_id=roomID -> if startdate == currentdate -> if starttime == currenttime
-//                 // turn room button red
-
-//             },error: function(msg) {
-//                 // there was a problem
-//                 alert("There was a problem: " + msg.status + " " + msg.statusText);
-//             }
-//   });
-
-// }
-
 function color_rooms(element, roomID){
   var url = "reservation_status.php";
   $.ajax({  
@@ -133,9 +130,54 @@ function color_rooms(element, roomID){
     url: 'reservation_status.php', 
     data: {"room_id": roomID},
     success: function(response) {
-        console.log(response);
+      var d = new Date();
+      var currentHour = parseInt(d.getHours());
+      response = JSON.parse(response);
+      var array = response.hours;
+      for(var i =0; i<array.length; i++){
+        if(array[i] === currentHour){
+          turnGreen(roomID);
+        }
+      }
     }
-});
+  });
+}
+
+function disable_rooms(element, roomID, chosenDate){
+  console.log("disabled"+roomID);
+  $.ajax({  
+    type: 'POST',  
+    url: 'reservation_status.php', 
+    data: {"room_id": roomID},
+    success: function(response) {
+      var array = [];
+      // response = JSON.parse('{"hours":[19,20,21,23]}');
+      response = JSON.parse(response);
+      var d = new Date();
+      var currentHour = parseInt(d.getHours());
+      var hrs = response.hours;
+      var j = 0;
+      for(var i = currentHour; i<24; i++){
+        if(!hrs.includes(parseInt(i))){
+          array[j] = parseInt(i);
+          j++;
+        }
+      }
+      for(var i = 0; i<array.length; i++){
+        var box = document.getElementById(array[i]+"box");
+        var txt = document.getElementById("txt"+array[i]);
+        box.disabled = true;
+        txt.style.color = 'lightgrey';
+      }
+    }
+  });
+}
+
+
+
+function turnGreen(buttonID){
+  var button = document.getElementById(buttonID);
+  button.style.backgroundColor="#31bc53";
 }
 
 
@@ -174,8 +216,6 @@ $(document).ready(function() {
     fetch_floor_rooms("Second", this);
     fetch_floor_rooms("Third", this);
     fetch_floor_rooms("Basement", this);
-
-    color_rooms(this, "1");
 
 });
 
@@ -236,24 +276,28 @@ $(document).ajaxComplete(function(){
       modal.style.display = "block";
       createTimeTable();
       prevHoursUnavail();
+      disable_rooms(this, currentRoom);
     }
 
     function prevHoursUnavail(){
       enableAllTimes();
-      var d = new Date();
-      var currentHour = d.getHours();
-      var times = document.getElementsByClassName('timebox');
-      for(var i = 0; i<times.length; i++){
-        id = parseInt(times[i].id);
-        if(id<currentHour && chosenDate.getUTCDate() == today.getUTCDate()){
-          times[i].disabled = true;
-          txt = document.getElementById("txt"+i);
-          txt.style.color = "lightgrey";
+      if(chosenDate.getUTCDate() == today.getUTCDate()){
+        var d = new Date();
+        var currentHour = d.getHours();
+        var times = document.getElementsByClassName('timebox');
+        for(var i = 0; i<times.length; i++){
+          id = parseInt(times[i].id);
+          if(id<currentHour){
+            times[i].disabled = true;
+            txt = document.getElementById("txt"+i);
+            txt.style.color = "lightgrey";
+          }
         }
       }
     }
 
     function enableAllTimes(){
+      console.log()
       var times = document.getElementsByClassName('timebox');
       for(var i = 0; i<times.length; i++){
         id = parseInt(times[i].id);
@@ -269,7 +313,7 @@ $(document).ajaxComplete(function(){
         x.setAttribute("type", "checkbox");
         x.setAttribute("name", "time");
         x.setAttribute("value", i);
-        x.setAttribute("id", i);
+        x.setAttribute("id", i+"box");
         x.setAttribute("class", "timebox");
         var t = document.createElement("P");
         t.setAttribute("id", "txt"+i);
@@ -292,9 +336,12 @@ $(document).ajaxComplete(function(){
         chosenDate = today;
       }
       else if(dateVal=="tomorrow"){
+        tomorrow.setDate(today.getDate() + 1);
         chosenDate = tomorrow;
       }
+      console.log(chosenDate);
       prevHoursUnavail();
+      disable_rooms(this, currentRoom, chosenDate);
 
     }
 
@@ -345,4 +392,5 @@ $(document).ajaxComplete(function(){
     }
 
 });
+
 

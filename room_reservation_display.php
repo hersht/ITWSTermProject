@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 
-$password = "bulldog1";
+$password = "cestlafin1";
 $dbname = "room-res";
 
 

@@ -152,7 +152,7 @@ body::after {
 
 #mainModalContent{
     width: 60%; /* Could be more or less, depending on screen size */
-    height: 400px;
+    height: 500px;
 }
 
 #viewResContent{

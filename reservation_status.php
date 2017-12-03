@@ -3,7 +3,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "bulldog1";
+$password = "cestlafin1";
 $dbname = "room-res";
 
 
@@ -18,22 +18,20 @@ if ($conn->connect_error) {
 
 $room = $_POST['room_id'];
 
-<<<<<<< HEAD
-echo "Current PHP Version: ".phpversion()."<br>";
-$room = $_POST["room_id"];
-=======
->>>>>>> 6c6cb8def62e380b682d268dd9c9c6fe99c418a9
 
-echo "ROOM: ".$room."<br>";
+//echo "Current PHP Version: ".phpversion()."<br>";
+$room = $_POST["room_id"];
+//echo "ROOM: ".$room."<br>";
 $today = date("Y-m-d");
 date_default_timezone_set("America/New_York");
 $curr_time = date("h:i:sa");
-$curr_military_time = date("H:i", strtotime($curr_time));
+$curr_military_time = date("H:00:00", strtotime($curr_time));
+
 //echo "MILITARY TIME: ".$curr_military_time;
-$closest_hour = date('H')+1;
+$closest_hour = date('H');
 $hours = [];
 $reserved_hours = [];
-echo $curr_military_time;
+//echo $curr_military_time;
 
 $sql = "SELECT * FROM `reservation` WHERE startdate='$today' AND start>='$curr_military_time' AND room_id = '$room'";
 $result = $conn->query($sql);
@@ -53,11 +51,14 @@ if ($result->num_rows > 0) {
 }
 
 
+$closest_hour = (int)$closest_hour;
 for($i = $closest_hour; $i <= 23; ++$i){
 	$found_hour = False;
 	for($j = 0; $j < count($reserved_hours); ++$j){
 		//echo "RESERVED: ".$reserved_hours[$j];
-		if($i == $reserved_hours[$j]){
+		//echo "FIND: ".$i;
+		if($i == (int)$reserved_hours[$j]){
+			//echo "FOUND: ".$i;
 			$found_hour = True;
 		}
 	}

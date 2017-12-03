@@ -53,7 +53,7 @@
 
         <div id="reservationPicker">
           <div id="modalDate" class="reserve">
-            <form action="">
+            <form action=""> 
               <p>Choose a date</p>
               <select id="dateSelect">
                 <option id="today" class="date" name="date" value="today">
@@ -62,7 +62,16 @@
               <p>Choose times</p>
               <div id="row1"></div>
               <div id="row2"></div>
-              <input type="submit" value="Reserve">
+              
+              <form action="">
+                Enter RCS ID:<br>
+              <input type="text" name="firstname" id = "rcs_id_val">
+              </form> 
+              <br/>
+              <br/>
+              <input type="submit" value="Reserve" onclick = "reserve(document.getElementById('rcs_id_val').value,  
+              document.getElementById('row1'), document.getElementById('row2'), document.getElementById('dateSelect'), document.getElementById('modalTitle').innerHTML)">
+              
             </form>
           </div>          
         </div>
