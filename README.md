@@ -16,8 +16,10 @@
 ├── includes
 │   ├── head.inc.php
 │   └── init.inc.php
+├── index.html
 ├── index.js
 ├── index.php
+├── index1.html
 ├── reservation_status.php
 ├── reserve.php
 ├── resources
@@ -26,6 +28,7 @@
 │   └── style.css
 ├── room-res.sql
 ├── room_reservation_display.php
+├── sample.php
 └── tree.md
 
 ###### SQL Database
