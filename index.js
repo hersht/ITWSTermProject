@@ -211,6 +211,7 @@ function disable_rooms(element, roomID, chosenDate){
           var txt = document.getElementById("txt"+array[i]);
           box.disabled = true;
           txt.style.color = 'lightgrey';
+
         }
       }
     });
@@ -254,7 +255,7 @@ function reserve(rcs_id, first_row_times, second_row_times, date, room_id_str){
   for(var x = 0; x < boxes.length; ++x){
     if(boxes[x].checked){
       console.log("HERE...");
-      time_arr[time_arr.length] = boxes[x].value;
+      time_arr[time_arr.length] = String(boxes[x].value);
     }
   }
 
@@ -301,33 +302,26 @@ function resByRCSID(element, rcsId){
     url: 'display_reservation.php',
     data: {'rcs_id': rcsId},
     success: function(response) {
-      alert(response);
-      
-      // var output = "<br/>";
-      // output+="<br/>";
-      // output+="<br/>";
-
-      // output+="<tr>";
-      // output+="<th> Res ID </th>";
-      // output+="<th> Room ID </th>";
-      // output+="<th> Number of Chairs </th>";
-      // output+="<th> Size </th>";
-      // output+="</tr>";
-      // output+="<br/>";
-
-
-      // $.each(response.Reservations, function(i, item) {
-      //   alert(item[0]);
-      //   output+="<tr>";
-      //   output+="<td>" + item[0] + "</td>";
-      //   output+="<td>" + item[1] + "</td>";
-      //   output+="<td>" + item[2] + "</td>";
-      //   output+="<td>" + item[3] + "</td>";
-      //   output+="</tr>";
-      // });
-
-      // alert(output);
-
+      response = JSON.parse(response);
+      console.log("RCS ID: RESPONSE: " + response);
+      var res = response.Reservations;
+      if(res.length == 0){
+        var txt = document.getElementById("resByRCSTxt");
+        txt.innerHTML = ("No reservations found");
+      }
+      var table = document.getElementById("resByRCSTable");
+      for(var i =0; i<res.length; i++){
+        var room = res[i][1];
+        var day = res[i][2];
+        var time = res[i][3];
+        var row = table.insertRow(i+1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = room;
+        cell2.innerHTML = day;
+        cell3.innerHTML = time;
+      }
     }
   });
 }
@@ -373,7 +367,12 @@ $(document).ready(function() {
 
 function showRes() {
   var data = document.getElementById("rcs_data").value;
-  resByRCSID(this, data);
+  if(data === ""){
+    alert("Please enter your RCS ID");
+  }
+  else{
+    resByRCSID(this, data);
+  }
 } 
 
 
@@ -501,6 +500,7 @@ $(document).ajaxComplete(function(){
        var title = document.getElementById("modalTitle").innerHTML;
        var title_params = title.split(" ");
       disable_rooms(this, title_params[1], dateVal);
+
     }
 
 
@@ -536,6 +536,13 @@ $(document).ajaxComplete(function(){
     //close button for view reservations modal
     close2.onclick = function(){
       viewResModal.style.display = "none";
+      var x = document.getElementById("resByRCSTable").rows.length;
+      for(var i = 1; i<x; i++){
+        document.getElementById("resByRCSTable").deleteRow(1);
+      }
+      var txt = document.getElementById("resByRCSTxt");
+      txt.innerHTML = ("");
+      document.getElementById("rcs_data").value = "";
     }
     
     //if user clicks out of modal, close modal
@@ -566,6 +573,13 @@ $(document).ajaxComplete(function(){
       }
       if (event.target == viewResModal) {
         viewResModal.style.display = "none";
+        var x = document.getElementById("resByRCSTable").rows.length;
+        for(var i = 1; i<x; i++){
+          document.getElementById("resByRCSTable").deleteRow(1);
+        }
+        var txt = document.getElementById("resByRCSTxt");
+        txt.innerHTML = ("");
+        document.getElementById("rcs_data").value = "";
       }
     }
 

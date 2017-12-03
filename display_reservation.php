@@ -1,7 +1,7 @@
 <?php
 	$dbOk = false;
   
-	@ $db = new mysqli('localhost', 'root', 'cestlafin1', 'room-res');
+	@ $db = new mysqli('localhost', 'root', 'mypass', 'room-res');
 	  
 	if ($db->connect_error) {
 		echo '<div class="messages">Could not connect to the database. Error: ';
@@ -10,22 +10,31 @@
 	    $dbOk = true;
 	}
 
+	
+
+	$stmt = $db->prepare("SELECT reservation.res_id, reservation.start, reservation.startdate, reservation.room_id FROM `reservation` WHERE reservation.rcs_id = ?");
+	$stmt->bind_param("s", $RCS);
+
 	$RCS = $_POST["rcs_id"];
 
 	$reservs = [];
 
 	if ($dbOk) {
-		$sql = "SELECT reservation.res_id, reservation.start, reservation.startdate, reservation.room_id FROM `reservation` WHERE reservation.rcs_id = '$RCS'";
-		$result = $db->query($sql);
-		$numRecords = $result->num_rows;
+		//$sql = "SELECT reservation.res_id, reservation.start, reservation.startdate, reservation.room_id FROM `reservation` WHERE reservation.rcs_id = '$RCS'";
+		//$result = $db->query($sql);
+		$stmt->execute();
+		$stmt->bind_result($res_id, $room_id, $start_date, $start);
+		//$numRecords = $result->num_rows;
 
-		for ($i=0; $i < $numRecords; $i++) {
-      		$record = $result->fetch_assoc();
+		//for ($i=0; $i < $numRecords; $i++) {
+		while($stmt->fetch()){
+      		//$record = $result->fetch_assoc();
 
 
-      		$curRes = [$record["res_id"],$record["room_id"],$record["startdate"],$record["start"]];
-      		$reservs[$i] = $curRes;
-		}
+      		$curRes = [$res_id,$room_id,$start_date,$start];
+      		$reservs[] = $curRes;
+      	}
+		//}
 
     
     	// Finally, let's close the database
