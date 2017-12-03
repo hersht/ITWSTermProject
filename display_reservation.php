@@ -1,7 +1,13 @@
 <?php
+
+	$servername = "localhost";
+	$username = "root";
+	$password = "mypass";
+	$dbname = "room-res";
+
 	$dbOk = false;
   
-	@ $db = new mysqli('localhost', 'root', 'mypass', 'room-res');
+	@ $db = new mysqli($servername, $username, $password, $dbname);
 	  
 	if ($db->connect_error) {
 		echo '<div class="messages">Could not connect to the database. Error: ';
@@ -9,8 +15,6 @@
 	} else {
 	    $dbOk = true;
 	}
-
-	
 
 	$stmt = $db->prepare("SELECT reservation.res_id, reservation.start, reservation.startdate, reservation.room_id FROM `reservation` WHERE reservation.rcs_id = ?");
 	$stmt->bind_param("s", $RCS);
@@ -20,24 +24,12 @@
 	$reservs = [];
 
 	if ($dbOk) {
-		//$sql = "SELECT reservation.res_id, reservation.start, reservation.startdate, reservation.room_id FROM `reservation` WHERE reservation.rcs_id = '$RCS'";
-		//$result = $db->query($sql);
 		$stmt->execute();
 		$stmt->bind_result($res_id, $room_id, $start_date, $start);
-		//$numRecords = $result->num_rows;
-
-		//for ($i=0; $i < $numRecords; $i++) {
 		while($stmt->fetch()){
-      		//$record = $result->fetch_assoc();
-
-
       		$curRes = [$res_id,$room_id,$start_date,$start];
       		$reservs[] = $curRes;
       	}
-		//}
-
-    
-    	// Finally, let's close the database
     	$db->close();
 	}
 	$final_arr["Reservations"] = $reservs;
