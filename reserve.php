@@ -3,6 +3,7 @@
 echo "REACHES THIS FILE:";
 $servername = "localhost";
 $username = "root";
+
 $password = "cestlafin1";
 $dbname = "room-res";
 
