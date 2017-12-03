@@ -11,7 +11,7 @@
 
 ###### Structures
 ```
-.</br>
+.
 ├── README.md
 ├── display_reservation.php
 ├── includes
@@ -27,14 +27,23 @@
 │   └── style.css
 ├── room-res.sql
 ├── room_reservation_display.php
+├── sample.php
 └── tree.md
 ```
-=======
+
 
 ###### SQL Database
 `room-res.sql` is the sql file for import</br>
 `room-res` should be the database name</br>
 
+###### Change password in following files for accessing databass:
+`room_reservation_display.php`</br>
+`display_reservation.php`</br>
+`reservation_status.php`</br>
+`reserve.php`
+
+###### Data input
+`sample.php` is an one time random script gives a sense to pour data into databse
 
 
 

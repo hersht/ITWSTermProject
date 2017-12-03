@@ -4,10 +4,8 @@
 ├── includes
 │   ├── head.inc.php
 │   └── init.inc.php
-├── index.html
 ├── index.js
 ├── index.php
-├── index1.html
 ├── reservation_status.php
 ├── reserve.php
 ├── resources
@@ -19,4 +17,4 @@
 ├── sample.php
 └── tree.md
 
-2 directories, 17 files
+2 directories, 15 files

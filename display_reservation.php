@@ -2,13 +2,13 @@
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "cestlafin1";
+	$password = "mypass";
 	$dbname = "room-res";
 
 	$dbOk = false;
   
 
-	@ $db = new mysqli('localhost', 'root', 'cestlafin1', 'room-res');
+	@ $db = new mysqli($servername, $username, $password, $dbname);
 
 	  
 	if ($db->connect_error) {
