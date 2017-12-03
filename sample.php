@@ -18,7 +18,7 @@
 
 		$servername = "localhost";
 		$username = "root";
-		$password = "mypass";
+		$password = "cestlafin1";
 		$dbname = "room-res";
 
 		// Create connection
