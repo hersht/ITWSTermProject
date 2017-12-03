@@ -183,33 +183,67 @@ function color_rooms(element, roomID){
 // }
 
 function disable_rooms(element, roomID, chosenDate){
+
+
   console.log("disabled"+roomID);
-  $.ajax({  
-    type: 'POST',  
-    url: 'reservation_status.php', 
-    data: {"room_id": roomID},
-    success: function(response) {
-      var array = [];
-      // response = JSON.parse('{"hours":[19,20,21,23]}');
-      response = JSON.parse(response);
-      var d = new Date();
-      var currentHour = parseInt(d.getHours());
-      var hrs = response.hours;
-      var j = 0;
-      for(var i = currentHour; i<24; i++){
-        if(!hrs.includes(parseInt(i))){
-          array[j] = parseInt(i);
-          j++;
+  if(chosenDate === "today"){
+    $.ajax({  
+      type: 'POST',  
+      url: 'reservation_status.php', 
+      data: {"room_id": roomID, "day": "today"},
+      success: function(response) {
+        var array = [];
+        console.log("DISABLE: " + response);
+        // response = JSON.parse('{"hours":[19,20,21,23]}');
+        response = JSON.parse(response);
+        var d = new Date();
+        var currentHour = parseInt(d.getHours());
+        var hrs = response.hours;
+        var j = 0;
+        for(var i = currentHour; i<24; i++){
+          if(!hrs.includes(parseInt(i))){
+            array[j] = parseInt(i);
+            j++;
+          }
+        }
+        for(var i = 0; i<array.length; i++){
+          var box = document.getElementById(array[i]+"box");
+          var txt = document.getElementById("txt"+array[i]);
+          box.disabled = true;
+          txt.style.color = 'lightgrey';
         }
       }
-      for(var i = 0; i<array.length; i++){
-        var box = document.getElementById(array[i]+"box");
-        var txt = document.getElementById("txt"+array[i]);
-        box.disabled = true;
-        txt.style.color = 'lightgrey';
+    });
+  }
+  else{
+    $.ajax({  
+      type: 'POST',  
+      url: 'reservation_status.php', 
+      data: {"room_id": roomID},
+      success: function(response) {
+        var array = [];
+        console.log("DISABLE: " + response);
+        // response = JSON.parse('{"hours":[19,20,21,23]}');
+        response = JSON.parse(response);
+        var d = new Date();
+        var currentHour = parseInt(d.getHours());
+        var hrs = response.hours;
+        var j = 0;
+        for(var i = currentHour; i<24; i++){
+          if(!hrs.includes(parseInt(i))){
+            array[j] = parseInt(i);
+            j++;
+          }
+        }
+        for(var i = 0; i<array.length; i++){
+          var box = document.getElementById(array[i]+"box");
+          var txt = document.getElementById("txt"+array[i]);
+          box.disabled = true;
+          txt.style.color = 'lightgrey';
+        }
       }
-    }
-  });
+    });
+  }
 }
 
 
@@ -398,7 +432,7 @@ $(document).ajaxComplete(function(){
       modal.style.display = "block";
       createTimeTable();
       prevHoursUnavail();
-      disable_rooms(this, currentRoom);
+      disable_rooms(this, id, "today");
     }
 
     function prevHoursUnavail(){
@@ -454,16 +488,19 @@ $(document).ajaxComplete(function(){
 
     document.getElementById("dateSelect").onchange = function() {
       var dateVal = document.getElementById("dateSelect").value; 
-      if(dateVal=="today"){
+      if(dateVal==="today"){
         chosenDate = today;
       }
-      else if(dateVal=="tomorrow"){
+      else if(dateVal==="tomorrow"){
         tomorrow.setDate(today.getDate() + 1);
         chosenDate = tomorrow;
       }
       console.log(chosenDate);
       prevHoursUnavail();
-      disable_rooms(this, currentRoom, chosenDate);
+      //console.log("ABOUT TO CHANGE: " + currentRoom);
+       var title = document.getElementById("modalTitle").innerHTML;
+       var title_params = title.split(" ");
+      disable_rooms(this, title_params[1], dateVal);
     }
 
 
@@ -485,6 +522,15 @@ $(document).ajaxComplete(function(){
       while (row.firstChild) {
           row.removeChild(row.firstChild);
       }      
+        var val = "today";
+        var sel = document.getElementById('dateSelect');
+        var opts = sel.options;
+        for (var opt, j = 0; opt = opts[j]; j++) {
+          if (opt.value == val) {
+            sel.selectedIndex = j;
+            break;
+          }
+        }
     }
 
     //close button for view reservations modal
@@ -499,12 +545,23 @@ $(document).ajaxComplete(function(){
         document.getElementById("today").innerHTML = "";
         document.getElementById("tomorrow").innerHTML = "";
         var row = document.getElementById("row1");
+
         while (row.firstChild) {
             row.removeChild(row.firstChild);
         }
+
         row = document.getElementById("row2");
         while (row.firstChild) {
             row.removeChild(row.firstChild);
+        }
+        var val = "today";
+        var sel = document.getElementById('dateSelect');
+        var opts = sel.options;
+        for (var opt, j = 0; opt = opts[j]; j++) {
+          if (opt.value == val) {
+            sel.selectedIndex = j;
+            break;
+          }
         }
       }
       if (event.target == viewResModal) {
