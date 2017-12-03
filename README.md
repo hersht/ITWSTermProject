@@ -11,7 +11,7 @@
 
 ###### Structures
 ```
-.</br>
+.
 ├── README.md
 ├── display_reservation.php
 ├── includes
@@ -27,6 +27,7 @@
 │   └── style.css
 ├── room-res.sql
 ├── room_reservation_display.php
+├── sample.php
 └── tree.md
 ```
 
@@ -40,5 +41,9 @@
 `display_reservation.php`</br>
 `reservation_status.php`</br>
 `reserve.php`
+
+###### Data input
+`sample.php` is an one time random script gives a sense to pour data into databse
+
 
 
