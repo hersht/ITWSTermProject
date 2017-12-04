@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set("America/New_York");
 $servername = "localhost";
 $username = "root";
 
@@ -17,7 +17,6 @@ if ($conn->connect_error) {
 
 
 $stmt = $conn->prepare("INSERT INTO reservation(start, startdate, rcs_id, res_id, room_id) VALUES (?, ?, ?, ?, ?)");
-
 
 
 $date_to_reserve = $_POST["date"];

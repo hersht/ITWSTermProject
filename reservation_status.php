@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("America/New_York");
 $servername = "localhost";
 $username = "root";
 
@@ -22,7 +23,7 @@ if(isset($_POST["day"])){
 	$today = date("Y-m-d", strtotime("+1 day"));
 	$today_set = False;
 }
-date_default_timezone_set("America/New_York");
+
 if($today_set == True){
 	$curr_time = date("h:i:sa");
 	$curr_military_time = date("H:00:00", strtotime($curr_time));

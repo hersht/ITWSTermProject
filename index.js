@@ -90,6 +90,7 @@ function color_rooms(element, roomID){
       var d = new Date();
       console.log("COLOR RESPONSE: " +roomID+response);
       var currentHour = parseInt(d.getHours());
+
       response = JSON.parse(response);
       var array = response.hours;
       for(var i =0; i<array.length; i++){
@@ -287,6 +288,7 @@ $(document).ready(function() {
 
 //View Your Reservations onclick
 function showRes() {
+  clearData();
   var data = document.getElementById("rcs_data").value;
   if(data === ""){
     alert("Please enter your RCS ID");
@@ -295,6 +297,15 @@ function showRes() {
     resByRCSID(this, data);
   }
 } 
+
+function clearData(){
+  var x = document.getElementById("resByRCSTable").rows.length;
+  for(var i = 1; i<x; i++){
+    document.getElementById("resByRCSTable").deleteRow(1);
+  }
+  var txt = document.getElementById("resByRCSTxt");
+  txt.innerHTML = ("");
+}
 
 
 $(document).ajaxComplete(function(){
@@ -347,8 +358,9 @@ $(document).ajaxComplete(function(){
       //get dates (today & tomorrow)
       today.getDate();
       tomorrow.setDate(today.getDate() + 1);
-      document.getElementById("today").innerHTML = ("Today ("+(today.getUTCMonth()+1).toString()+"/"+(today.getUTCDate()).toString()+"/"+today.getUTCFullYear().toString()+")");
-      document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getUTCMonth()+1).toString()+"/"+(tomorrow.getUTCDate()).toString()+"/"+tomorrow.getUTCFullYear().toString()+")");
+      console.log(today +" "+tomorrow);
+      document.getElementById("today").innerHTML = ("Today ("+(today.getMonth()+1).toString()+"/"+(today.getDate()).toString()+"/"+today.getFullYear().toString()+")");
+      document.getElementById("tomorrow").innerHTML = ("Tomorrow ("+(tomorrow.getMonth()+1).toString()+"/"+(tomorrow.getDate()).toString()+"/"+tomorrow.getFullYear().toString()+")");
       modal.style.display = "block";
       //fill in available times/disable reserved times
       createTimeTable();
@@ -359,7 +371,7 @@ $(document).ajaxComplete(function(){
     //set all times before current hour to unavailable (cannot be reserved if time has already passed)
     function prevHoursUnavail(){
       enableAllTimes();
-      if(chosenDate.getUTCDate() == today.getUTCDate()){
+      if(chosenDate.getDate() == today.getDate()){
         var d = new Date();
         var currentHour = d.getHours();
         var times = document.getElementsByClassName('timebox');
